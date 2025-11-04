@@ -1,0 +1,69 @@
+# .NET build
+bin/
+obj/
+out/
+*.log
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code
+.vscode/
+.history/
+
+# Rider
+.idea/
+*.DotSettings.user
+
+# Visual Studio
+.vs/
+*.dbmdl
+*.pdb
+*.cache
+*.pidb
+*.svd
+
+# User-specific files
+*.swp
+*.bak
+*.orig
+*.tmp
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# NuGet packages
+*.nupkg
+# The packages folder can be ignored if you use Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if using NuGet 3+
+#*.nuget/
+
+# Entity Framework Migrations
+Migrations/
+
+# Publish output
+publish/
+*.publishsettings
+
+# npm, yarn
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# dotenv environment files
+.env
+.env.*
+
+# SQLite database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Others
+_Dependencies/
+*.DS_Store
+Thumbs.db

@@ -1,0 +1,96 @@
+﻿@page "/todos"
+@inject HttpClient Http
+@using Shared.Entities.Dtos
+
+<h3>Todos</h3>
+
+<div class="mb-3">
+    <input class="form-control" @bind="newTitle" placeholder="New todo title..."/>
+    <button class="btn btn-primary mt-2" @onclick="AddAsync" disabled="@string.IsNullOrWhiteSpace(newTitle)">Add</button>
+</div>
+
+@if (loading)
+{
+    <p>Loading...</p>
+}
+else if (todos is null || todos.Count == 0)
+{
+    <p>No items.</p>
+}
+else
+{
+    <ul class="list-group">
+        @foreach (var t in todos)
+        {
+            <li class="list-group-item d-flex align-items-center justify-content-between">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" checked="@t.IsDone" @onchange="(e => ToggleAsync(t, ((bool)e.Value!)))" />
+                    <label class="form-check-label @(t.IsDone ? "text-decoration-line-through" : "")">@t.Title</label>
+                </div>
+                <button class="btn btn-sm btn-outline-danger" @onclick="() => DeleteAsync(t.Id)">Delete</button>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private List<TodoItemDto> todos = new();
+    private string? newTitle;
+    private bool loading;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAsync();
+    }
+
+    private async Task LoadAsync()
+    {
+        loading = true;
+        try
+        {
+            var data = await Http.GetFromJsonAsync<List<TodoItemDto>>("api/todos");
+            todos = data ?? [];
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
+
+    private async Task AddAsync()
+    {
+        if (string.IsNullOrWhiteSpace(newTitle)) return;
+        var req = new CreateTodoRequest(newTitle);
+        var res = await Http.PostAsJsonAsync("api/todos", req);
+        if (res.IsSuccessStatusCode)
+        {
+            var created = await res.Content.ReadFromJsonAsync<TodoItemDto>();
+            if (created is not null) todos.Insert(0, created);
+            newTitle = string.Empty;
+        }
+    }
+
+    private async Task ToggleAsync(TodoItemDto item, bool isDone)
+    {
+        var req = new UpdateTodoRequest(item.Title, isDone);
+        var res = await Http.PutAsJsonAsync($"api/todos/{item.Id}", req);
+        if (res.IsSuccessStatusCode)
+        {
+            var updated = await res.Content.ReadFromJsonAsync<TodoItemDto>();
+            if (updated is not null)
+            {
+                var idx = todos.FindIndex(x => x.Id == updated.Id);
+                if (idx >= 0) todos[idx] = updated;
+            }
+        }
+    }
+
+    private async Task DeleteAsync(int id)
+    {
+        var res = await Http.DeleteAsync($"api/todos/{id}");
+        if (res.IsSuccessStatusCode)
+        {
+            todos.RemoveAll(x => x.Id == id);
+        }
+    }
+}
