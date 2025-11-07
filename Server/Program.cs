@@ -29,6 +29,9 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
+    // Enable WebAssembly debugging endpoints during development
+    app.UseWebAssemblyDebugging();
+
     app.UseSwagger();
     app.UseSwaggerUI();
 }
