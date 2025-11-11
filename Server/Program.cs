@@ -3,6 +3,8 @@ using Services.Implements;
 using Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
+using Server.Middlewares; // added
+using Microsoft.AspNetCore.HttpOverrides; // forwarded headers
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +27,16 @@ builder.Services.AddScoped<ITodoService, TodoService>();
 // HttpClient (nếu cần)
 builder.Services.AddHttpClient();
 
+// Forwarded headers (nếu chạy sau reverse proxy)
+builder.Services.Configure<ForwardedHeadersOptions>(opts =>
+{
+    opts.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    // Có thể thêm KnownProxies / KnownNetworks nếu cần bảo mật chặt
+});
+
+// Caching for reverse DNS results
+builder.Services.AddMemoryCache();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -37,6 +49,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Áp dụng forwarded headers trước khi lấy RemoteIpAddress
+app.UseForwardedHeaders();
+
+// Custom middleware lấy IP + hostname
+app.UseRequestClientInfo();
 
 // Host Blazor WASM client (cần package Microsoft.AspNetCore.Components.WebAssembly.Server)
 app.UseBlazorFrameworkFiles();
