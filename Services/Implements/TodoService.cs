@@ -31,9 +31,12 @@ namespace Services.Implements
 
         public async Task<TodoItemDto> CreateAsync(CreateTodoRequest request, CancellationToken ct = default)
         {
+            var title = request.Title.Trim();
+            if (title.Length > 200) throw new ArgumentException("Title length > 200", nameof(request.Title));
+
             var entity = new TodoItem
             {
-                Title = request.Title.Trim(),
+                Title = title,
                 IsDone = false,
                 CreatedAt = DateTime.UtcNow
             };
@@ -49,7 +52,10 @@ namespace Services.Implements
             var entity = await db.TodoItems.FirstOrDefaultAsync(x => x.Id == id, ct);
             if (entity is null) return null;
 
-            entity.Title = request.Title.Trim();
+            var title = request.Title.Trim();
+            if (title.Length > 200) throw new ArgumentException("Title length > 200", nameof(request.Title));
+
+            entity.Title = title;
             entity.IsDone = request.IsDone;
 
             await db.SaveChangesAsync(ct);
