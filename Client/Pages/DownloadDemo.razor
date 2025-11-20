@@ -1,0 +1,40 @@
+@page "/download-demo"
+
+<PageTitle>Download Demo</PageTitle>
+
+<h3>Demo DownloadPanel</h3>
+<p class="text-muted">Ví d? cách s? d?ng component <code>DownloadPanel</code>.</p>
+
+<DownloadPanel OnExecute="HandleExecute" OnDownload="HandleDownload" />
+
+@if (lastExecute is not null)
+{
+    <div class="alert alert-info mt-3 p-2">
+        <div><strong>Last Execute:</strong> @lastExecute.ExecuteAtUtc.ToLocalTime().ToString("HH:mm:ss")</div>
+        <div>Data: @(lastExecute.CreateData ? lastExecute.DataType ?? "(none)" : "OFF")</div>
+        <div>PDF: @(lastExecute.CreatePdf ? lastExecute.PdfLayout ?? "(default)" : "OFF")</div>
+    </div>
+}
+
+@if (downloadMessage is not null)
+{
+    <div class="alert alert-success mt-2 p-2">@downloadMessage</div>
+}
+
+@code {
+    private Components.DownloadPanel.DownloadExecuteContext? lastExecute;
+    private string? downloadMessage;
+
+    private Task HandleExecute(Components.DownloadPanel.DownloadExecuteContext ctx)
+    {
+        lastExecute = ctx;
+        downloadMessage = null;
+        return Task.CompletedTask;
+    }
+
+    private Task HandleDownload(Components.DownloadPanel.GeneratedFile file)
+    {
+        downloadMessage = $"Ð? yêu c?u t?i: {file.Name}";
+        return Task.CompletedTask;
+    }
+}

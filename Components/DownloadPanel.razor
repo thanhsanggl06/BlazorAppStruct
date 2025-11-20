@@ -1,0 +1,220 @@
+@* DownloadPanel - pixel style approximation per 100% spec screenshot.
+   NOTE: Using table layout + custom CSS for tighter control. Adjust CSS if needed for exact pixel match.
+*@
+@namespace Components
+
+<div class="dp-root">
+  <div class="dp-header">????</div>
+  <div class="dp-box">
+    <table class="dp-form-table">
+      <tr>
+        <th>????</th>
+        <td>
+          <select class="dp-select" @bind="selectedStatus">
+            @foreach (var s in StatusOptions) { <option value="@s">@s</option> }
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th>????</th>
+        <td>
+          <select class="dp-select-year" @bind="selectedYear">
+            @foreach (var y in YearOptions) { <option value="@y">@y</option> }
+          </select>
+          <span class="dp-inline-label">?</span>
+          <select class="dp-select-month" @bind="selectedMonth">
+            @foreach (var m in MonthOptions) { <option value="@m">@m</option> }
+          </select>
+          <span class="dp-inline-label">?</span>
+        </td>
+      </tr>
+      <tr>
+        <th>?????</th>
+        <td>
+          <select class="dp-select-wide" @bind="selectedSupplierCategory">
+            @foreach (var c in SupplierCategories) { <option value="@c">@c</option> }
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th>???</th>
+        <td>
+          <input class="dp-input" @bind="supplier" />
+        </td>
+      </tr>
+      <tr>
+        <th>????</th>
+        <td>
+          <input class="dp-input" @bind="orderCompany" />
+        </td>
+      </tr>
+      <tr>
+        <th>???</th>
+        <td>
+          <input class="dp-input" @bind="deliveryDestination" />
+        </td>
+      </tr>
+      <tr class="dp-last-row">
+        <td colspan="2" class="dp-search-cell">
+          <button class="dp-btn-search" @onclick="SearchAsync">??</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="dp-box mt-2">
+    <div class="dp-sub-header">??????</div>
+    <div class="dp-download-row">
+      <label class="dp-check"><input type="checkbox" @bind="createData" /> ?????</label>
+      <select class="dp-select-mini" @bind="selectedDataType" disabled="@(!createData)">
+        @foreach (var t in DataTypes) { <option value="@t">@t</option> }
+      </select>
+      <label class="dp-check ms-2"><input type="checkbox" @bind="createPdf" /> PDF??</label>
+      <select class="dp-select-mini" @bind="selectedPdfLayout" disabled="@(!createPdf)">
+        @foreach (var l in PdfLayouts) { <option value="@l">@l</option> }
+      </select>
+      <button class="dp-btn-action ms-2" @onclick="ExecuteAsync" disabled="@IsExecuteDisabled">??</button>
+      <button class="dp-btn-secondary ms-1" @onclick="ShowList">??</button>
+    </div>
+
+    @if (executing)
+    {
+      <div class="dp-status">???...</div>
+    }
+
+    @if (showList)
+    {
+      <div class="dp-filelist">
+        <div class="dp-filelist-title">????????</div>
+        @if (GeneratedFiles.Count == 0)
+        {
+          <div class="dp-empty">???????</div>
+        }
+        else
+        {
+          <table class="dp-table">
+            <thead>
+              <tr><th>??</th><th>??</th><th>????</th><th></th></tr>
+            </thead>
+            <tbody>
+              @foreach (var f in GeneratedFiles)
+              {
+                <tr>
+                  <td>@f.Name</td>
+                  <td>@f.Type</td>
+                  <td>@f.CreatedAt.ToLocalTime().ToString("yyyy/MM/dd HH:mm:ss")</td>
+                  <td><button class="dp-link" @onclick="() => Download(f)">DL</button></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        }
+      </div>
+    }
+  </div>
+</div>
+
+@code {
+  [Parameter] public EventCallback<SearchCondition> OnSearch { get; set; }
+  [Parameter] public EventCallback<DownloadExecuteContext> OnExecute { get; set; }
+  [Parameter] public EventCallback<GeneratedFile> OnDownload { get; set; }
+
+  private string? selectedStatus;
+  private int selectedYear;
+  private int selectedMonth;
+  private string? selectedSupplierCategory;
+  private string? supplier = string.Empty;
+  private string? orderCompany = "???";
+  private string? deliveryDestination = "?×??? ????";
+
+  private bool createData = true;
+  private bool createPdf;
+  private string? selectedDataType;
+  private string? selectedPdfLayout;
+  private bool executing;
+  private bool showList;
+
+  private List<string> StatusOptions { get; } = new() { "??", "???", "??" };
+  private List<int> YearOptions { get; } = Enumerable.Range(DateTime.UtcNow.Year - 10, 11).OrderByDescending(x => x).ToList();
+  private List<int> MonthOptions { get; } = Enumerable.Range(1, 12).ToList();
+  private List<string> SupplierCategories { get; } = new() { "???", "A", "B", "C" };
+  private List<string> DataTypes { get; } = new() { "PDF??", "CSV", "Excel", "Json" };
+  private List<string> PdfLayouts { get; } = new() { "A4", "A3", "Letter" };
+  private List<GeneratedFile> GeneratedFiles { get; } = new();
+
+  protected override void OnInitialized()
+  {
+    selectedStatus = StatusOptions.First();
+    selectedYear = DateTime.UtcNow.Year;
+    selectedMonth = DateTime.UtcNow.Month;
+    selectedSupplierCategory = SupplierCategories.First();
+    selectedDataType = DataTypes.Skip(1).First();
+    selectedPdfLayout = PdfLayouts.First();
+  }
+
+  private bool IsExecuteDisabled => executing || (!createData && !createPdf);
+
+  private async Task SearchAsync()
+  {
+    var cond = new SearchCondition(selectedStatus, selectedYear, selectedMonth, selectedSupplierCategory, supplier, orderCompany, deliveryDestination);
+    if (OnSearch.HasDelegate) await OnSearch.InvokeAsync(cond);
+  }
+
+  private async Task ExecuteAsync()
+  {
+    executing = true;
+    var ctx = new DownloadExecuteContext(createData, selectedDataType, createPdf, selectedPdfLayout, DateTime.UtcNow);
+    if (OnExecute.HasDelegate) await OnExecute.InvokeAsync(ctx);
+    await Task.Delay(500);
+    if (createData && !string.IsNullOrWhiteSpace(selectedDataType)) GeneratedFiles.Add(new GeneratedFile($"data_{DateTime.UtcNow:HHmmss}.{selectedDataType.ToLower()}", selectedDataType, DateTime.UtcNow));
+    if (createPdf) GeneratedFiles.Add(new GeneratedFile($"report_{DateTime.UtcNow:HHmmss}.pdf", "PDF", DateTime.UtcNow));
+    executing = false;
+  }
+
+  private void ShowList() => showList = !showList;
+  private async Task Download(GeneratedFile f) { if (OnDownload.HasDelegate) await OnDownload.InvokeAsync(f); }
+
+  public record GeneratedFile(string Name, string Type, DateTime CreatedAt);
+  public record DownloadExecuteContext(bool CreateData, string? DataType, bool CreatePdf, string? PdfLayout, DateTime ExecuteAtUtc);
+  public record SearchCondition(string? Status, int Year, int Month, string? SupplierCategory, string? Supplier, string? OrderCompany, string? DeliveryDestination);
+}
+
+<style>
+/* Colors adjusted closer to spec */
+.dp-root { font-family: "Yu Gothic UI", sans-serif; font-size:13px; max-width:540px; }
+.dp-header { background:#c7e2ff; padding:4px 8px; font-weight:600; border:1px solid #666; border-bottom:none; color:#222; }
+.dp-box { border:1px solid #666; background:#fff; }
+
+/* Table layout with vertical border between label and input */
+.dp-form-table { width:100%; border-collapse:collapse; }
+.dp-form-table th { width:140px; text-align:right; padding:4px 6px; font-weight:400; background:#f1f5fb; border-bottom:1px solid #bbb; border-right:1px solid #999; }
+.dp-form-table td { padding:4px 6px; border-bottom:1px solid #bbb; background:#ffffff; }
+.dp-form-table tr:last-child th, .dp-form-table tr:last-child td { border-bottom:none; }
+.dp-select, .dp-select-year, .dp-select-month, .dp-select-wide, .dp-input { height:24px; font-size:12px; padding:2px 4px; border:1px solid #999; }
+.dp-select-year { width:90px; }
+.dp-select-month { width:60px; }
+.dp-select-wide { width:190px; }
+.dp-input { width:190px; }
+.dp-inline-label { margin:0 6px 0 4px; }
+.dp-search-cell { text-align:center; padding-top:10px; }
+.dp-btn-search { background:#e2e2e2; border:1px solid #666; padding:2px 22px; font-size:12px; color:#222; }
+.dp-btn-search:hover { background:#d6d6d6; }
+
+.dp-sub-header { font-weight:600; font-size:13px; margin:6px 0 8px 0; color:#222; }
+.dp-download-row { display:flex; flex-wrap:wrap; align-items:center; gap:6px; }
+.dp-check { font-size:12px; }
+.dp-select-mini { height:24px; font-size:12px; padding:2px 4px; width:100px; border:1px solid #999; }
+.dp-btn-action { background:#2d6cdf; color:#fff; border:1px solid #1d4ca0; padding:2px 18px; font-size:12px; }
+.dp-btn-action:disabled { opacity:.45; }
+.dp-btn-secondary { background:#efefef; border:1px solid #777; font-size:12px; padding:2px 14px; color:#222; }
+.dp-btn-secondary:hover { background:#e2e2e2; }
+.dp-status { margin-top:4px; font-size:12px; color:#0a58ca; }
+
+.dp-filelist { margin-top:8px; }
+.dp-filelist-title { font-weight:600; margin-bottom:4px; font-size:12px; }
+.dp-empty { font-size:12px; color:#666; }
+.dp-table { width:100%; border-collapse:collapse; font-size:12px; }
+.dp-table th { background:#f5f5f5; border:1px solid #ccc; padding:2px 4px; font-weight:400; }
+.dp-table td { border:1px solid #ccc; padding:2px 4px; }
+.dp-link { background:none; border:none; color:#0d6efd; text-decoration:underline; font-size:12px; cursor:pointer; }
+</style>

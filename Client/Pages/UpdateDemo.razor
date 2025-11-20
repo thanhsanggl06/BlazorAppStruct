@@ -1,0 +1,34 @@
+@page "/update-demo"
+
+<PageTitle>Update Panel Demo</PageTitle>
+
+<h3>Demo UpdatePanel</h3>
+<p class="text-muted">Ví d? cách s? d?ng component <code>UpdatePanel</code> theo tài li?u Nh?t B?n.</p>
+
+<UpdatePanel OnSearch="HandleSearch" />
+
+@if (lastSearch is not null)
+{
+    <div class="alert alert-info mt-3 p-2">
+        <div><strong>????:</strong></div>
+        <div>????: @(lastSearch.NewArrivalFast ? "??" : "???")</div>
+        @if (lastSearch.NewArrivalFast)
+        {
+            <div>????: @lastSearch.Category</div>
+        }
+        <div>????: @lastSearch.Year? @lastSearch.Month?</div>
+        <div>?????: @lastSearch.SupplierCategory</div>
+        <div>????: @lastSearch.OrderCompany</div>
+        <div>???: @lastSearch.DeliveryDestination</div>
+    </div>
+}
+
+@code {
+    private Components.UpdatePanel.SearchCondition? lastSearch;
+
+    private Task HandleSearch(Components.UpdatePanel.SearchCondition condition)
+    {
+        lastSearch = condition;
+        return Task.CompletedTask;
+    }
+}
