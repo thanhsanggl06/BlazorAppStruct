@@ -19,8 +19,8 @@ public class StoredProcedureExecutor : IStoredProcedureExecutor
     public async Task<List<T>> QueryAsync<T>(string spName, object? parameters = null) where T : class
     {
         var (sql, sqlParams) = BuildSql(spName, parameters);
-        var isEntity = _db.Model.FindEntityType(typeof(T)) is not null && typeof(T) != typeof(object);
-        if (isEntity)
+        var entityType = _db.Model.FindEntityType(typeof(T));
+        if (entityType is not null)
         {
             return await _db.Set<T>().FromSqlRaw(sql, sqlParams).ToListAsync();
         }
