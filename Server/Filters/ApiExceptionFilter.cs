@@ -11,9 +11,9 @@ public class ApiExceptionFilter : IAsyncExceptionFilter
 
     public Task OnExceptionAsync(ExceptionContext context)
     {
-        _logger.LogError(context.Exception, "Unhandled exception.");
-
-        var resp = ApiResponse.Fail<object>("UNHANDLED", new[] { context.Exception.Message });
+        // Deprecated: handled by ExceptionHandlingMiddleware
+        _logger.LogError(context.Exception, "Unhandled exception (filter - should be unused)." );
+        var resp = ApiResponse.Error<object>("Unhandled server error", code: "UNHANDLED");
         context.Result = new ObjectResult(resp) { StatusCode = StatusCodes.Status500InternalServerError };
         context.ExceptionHandled = true;
         return Task.CompletedTask;

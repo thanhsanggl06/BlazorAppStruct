@@ -40,21 +40,15 @@ public class ApiClient : IApiClient
 
         var res = await _http.SendAsync(req, ct);
 
-        if (!res.IsSuccessStatusCode)
+        try
         {
-            try
-            {
-                var errorPayload = await res.Content.ReadFromJsonAsync<ApiResponse<T>>(cancellationToken: ct);
-                if (errorPayload is not null)
-                    return errorPayload;
-            }
-            catch { }
-            return ApiResponse.Fail<T>(res.StatusCode.ToString(), new[] { "Request failed" });
+            var payload = await res.Content.ReadFromJsonAsync<ApiResponse<T>>(cancellationToken: ct);
+            if (payload is not null)
+                return payload;
         }
+        catch { }
 
-        var payload = await res.Content.ReadFromJsonAsync<ApiResponse<T>>(cancellationToken: ct);
-        if (payload is null)
-            return ApiResponse.Fail<T>("EMPTY_RESPONSE", new[] { "No content" });
-        return payload;
+        var fallbackMessage = res.IsSuccessStatusCode ? "Empty response" : $"Request failed: {(int)res.StatusCode}";
+        return ApiResponse.Error<T>(fallbackMessage, res.StatusCode.ToString());
     }
 }

@@ -50,6 +50,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Global API exception handling
+app.UseApiExceptionHandling();
+
 // Áp dụng forwarded headers trước khi lấy RemoteIpAddress
 app.UseForwardedHeaders();
 

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shared.Contracts;
 
 namespace Services.Implements
 {
@@ -32,7 +33,14 @@ namespace Services.Implements
         public async Task<TodoItemDto> CreateAsync(CreateTodoRequest request, CancellationToken ct = default)
         {
             var title = request.Title.Trim();
-            if (title.Length > 200) throw new ArgumentException("Title length > 200", nameof(request.Title));
+            if (string.IsNullOrWhiteSpace(title))
+                throw new BusinessException("Title is required", code: "VALIDATION");
+            if (title.Length > 200)
+                throw new BusinessException("Title length > 200", code: "VALIDATION");
+
+            var exists = await db.TodoItems.AnyAsync(x => x.Title == title, ct);
+            if (exists)
+                throw new BusinessException("Title already exists", code: "DUPLICATE");
 
             var entity = new TodoItem
             {
@@ -53,7 +61,14 @@ namespace Services.Implements
             if (entity is null) return null;
 
             var title = request.Title.Trim();
-            if (title.Length > 200) throw new ArgumentException("Title length > 200", nameof(request.Title));
+            if (string.IsNullOrWhiteSpace(title))
+                throw new BusinessException("Title is required", code: "VALIDATION");
+            if (title.Length > 200)
+                throw new BusinessException("Title length > 200", code: "VALIDATION");
+
+            var exists = await db.TodoItems.AnyAsync(x => x.Id != id && x.Title == title, ct);
+            if (exists)
+                throw new BusinessException("Title already exists", code: "DUPLICATE");
 
             entity.Title = title;
             entity.IsDone = request.IsDone;

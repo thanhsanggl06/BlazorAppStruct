@@ -27,10 +27,10 @@ public class TodosViewModel
         try
         {
             var resp = await _api.GetAllAsync(ct);
-            if (resp.Success && resp.Data is not null)
+            if (resp.IsSuccess && resp.Data is not null)
                 _items = resp.Data.ToList();
             else
-                Error = string.Join("; ", resp.Errors ?? []);
+                Error = resp.Message ?? "Unknown error";
         }
         finally
         {
@@ -45,9 +45,9 @@ public class TodosViewModel
         try
         {
             var resp = await _api.CreateAsync(new CreateTodoRequest(title), ct);
-            if (!resp.Success || resp.Data is null)
+            if (!resp.IsSuccess || resp.Data is null)
             {
-                Error = string.Join("; ", resp.Errors ?? []);
+                Error = resp.Message ?? "Request failed";
                 return false;
             }
             _items.Insert(0, resp.Data);
@@ -65,9 +65,9 @@ public class TodosViewModel
         try
         {
             var resp = await _api.UpdateAsync(item.Id, new UpdateTodoRequest(item.Title, isDone), ct);
-            if (!resp.Success || resp.Data is null)
+            if (!resp.IsSuccess || resp.Data is null)
             {
-                Error = string.Join("; ", resp.Errors ?? []);
+                Error = resp.Message ?? "Request failed";
                 return false;
             }
             var idx = _items.FindIndex(x => x.Id == item.Id);
@@ -83,9 +83,9 @@ public class TodosViewModel
         try
         {
             var resp = await _api.DeleteAsync(id, ct);
-            if (!resp.Success)
+            if (!resp.IsSuccess)
             {
-                Error = string.Join("; ", resp.Errors ?? []);
+                Error = resp.Message ?? "Request failed";
                 return false;
             }
             _items.RemoveAll(x => x.Id == id);
