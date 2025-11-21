@@ -23,6 +23,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // App services
 builder.Services.AddScoped<ITodoService, TodoService>();
+builder.Services.AddScoped<ITodoSpService, TodoSpService>();
+builder.Services.AddScoped<ITodoEfService, TodoEfService>();
+
+// SP executors
+builder.Services.AddScoped<IStoredProcedureExecutor, StoredProcedureExecutor>(); // EF FromSql executor
+builder.Services.AddScoped<IAdoStoredProcedureExecutor, AdoStoredProcedureExecutor>(); // ADO.NET executor
 
 // HttpClient (nếu cần)
 builder.Services.AddHttpClient();

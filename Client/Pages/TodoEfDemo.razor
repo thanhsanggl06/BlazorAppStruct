@@ -1,0 +1,110 @@
+@page "/todo-ef-demo"
+@inject Client.ViewModels.TodoEfViewModel VM
+@using Shared.Entities.Dtos
+
+<h3>Todo EF Demo</h3>
+
+<div class="row g-2 mb-3">
+    <div class="col-auto">
+        <input class="form-control" @bind="searchText" placeholder="Search title..." />
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-secondary" @onclick="ApplySearch" disabled="@VM.IsLoading">Search</button>
+    </div>
+    <div class="col-auto">
+        <input class="form-control" @bind="newTitle" placeholder="New title..." />
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-primary" @onclick="AddAsync" disabled="@(VM.IsSaving || string.IsNullOrWhiteSpace(newTitle))">Add</button>
+    </div>
+</div>
+
+@if (!string.IsNullOrWhiteSpace(VM.Error))
+{
+    <div class="alert alert-danger">@VM.Error</div>
+}
+
+@if (VM.IsLoading)
+{
+    <p>Loading...</p>
+}
+else if (VM.Items.Count == 0)
+{
+    <p>No items.</p>
+}
+else
+{
+    <ul class="list-group mb-3">
+        @foreach (var t in VM.Items)
+        {
+            <li class="list-group-item d-flex align-items-center justify-content-between">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" checked="@t.IsDone" @onchange="(e => ToggleAsync(t, (bool)e.Value!))" disabled="@VM.IsSaving" />
+                    <label class="form-check-label @(t.IsDone ? "text-decoration-line-through" : "")">@t.Title</label>
+                </div>
+                <button class="btn btn-sm btn-outline-danger" @onclick="() => DeleteAsync(t.Id)" disabled="@VM.IsSaving">Delete</button>
+            </li>
+        }
+    </ul>
+
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            Page @VM.PageNumber of @((int)Math.Ceiling(VM.Total / (double)VM.PageSize)) (Total: @VM.Total)
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-outline-secondary" @onclick="PrevAsync" disabled="@VM.IsLoading || VM.PageNumber <= 1">Prev</button>
+            <button class="btn btn-outline-secondary" @onclick="NextAsync" disabled="@VM.IsLoading || VM.PageNumber * VM.PageSize >= VM.Total">Next</button>
+        </div>
+    </div>
+}
+
+@if (VM.IsSaving)
+{
+    <div class="mt-2"><em>Saving...</em></div>
+}
+
+@code {
+    private string? newTitle;
+    private string? searchText;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await VM.LoadAsync();
+    }
+
+    private async Task AddAsync()
+    {
+        if (await VM.AddAsync(newTitle))
+        {
+            newTitle = string.Empty;
+            await VM.LoadAsync();
+        }
+    }
+
+    private async Task ToggleAsync(TodoItemDto item, bool isDone)
+    {
+        await VM.ToggleAsync(item, isDone);
+    }
+
+    private async Task DeleteAsync(int id)
+    {
+        await VM.DeleteAsync(id);
+    }
+
+    private async Task NextAsync()
+    {
+        await VM.NextPageAsync();
+    }
+
+    private async Task PrevAsync()
+    {
+        await VM.PrevPageAsync();
+    }
+
+    private async Task ApplySearch()
+    {
+        VM.Search = string.IsNullOrWhiteSpace(searchText) ? null : searchText;
+        VM.PageNumber = 1;
+        await VM.LoadAsync();
+    }
+}

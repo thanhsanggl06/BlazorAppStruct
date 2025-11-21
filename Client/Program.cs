@@ -15,4 +15,12 @@ builder.Services.AddScoped<IApiClient, ApiClient>();
 builder.Services.AddScoped<ITodoApi, TodoApi>();
 builder.Services.AddScoped<TodosViewModel>();
 
+// SP demo services
+builder.Services.AddScoped<ITodoSpApi, TodoSpApi>();
+builder.Services.AddScoped<TodoSpViewModel>();
+
+// EF demo services
+builder.Services.AddScoped<ITodoEfApi, TodoEfApi>();
+builder.Services.AddScoped<TodoEfViewModel>();
+
 await builder.Build().RunAsync();
