@@ -6,14 +6,31 @@ using System.Threading.Tasks;
 
 namespace Shared.Entities.Dtos
 {
-    public record TodoItemDto(
-        int Id,
-        string Title,
-        bool IsDone,
-        DateTime CreatedAt
-    );
+    // Converted to record class with explicit properties and parameterless constructor for reflection mapping support.
+    public record TodoItemDto
+    {
+        public int Id { get; init; }
+        public string Title { get; init; } = string.Empty;
+        public bool IsDone { get; init; }
+        public DateTime CreatedAt { get; init; }
 
-    public record CreateTodoRequest(string Title);
+        public TodoItemDto() { }
+        public TodoItemDto(int id, string title, bool isDone, DateTime createdAt)
+        {
+            Id = id;
+            Title = title;
+            IsDone = isDone;
+            CreatedAt = createdAt;
+        }
+    }
 
-    public record UpdateTodoRequest(string Title, bool IsDone);
+    public record CreateTodoRequest(string Title)
+    {
+        public CreateTodoRequest() : this(string.Empty) { }
+    }
+
+    public record UpdateTodoRequest(string Title, bool IsDone)
+    {
+        public UpdateTodoRequest() : this(string.Empty, false) { }
+    }
 }

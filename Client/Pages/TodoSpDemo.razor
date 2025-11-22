@@ -6,13 +6,13 @@
 
 <div class="row g-2 mb-3">
     <div class="col-auto">
-        <input class="form-control" @bind="searchText" placeholder="Search title..." />
+        <input class="form-control" @bind="searchText" @bind:event="oninput" placeholder="Search title..." />
     </div>
     <div class="col-auto">
         <button class="btn btn-secondary" @onclick="ApplySearch" disabled="@VM.IsLoading">Search</button>
     </div>
     <div class="col-auto">
-        <input class="form-control" @bind="newTitle" placeholder="New title..." />
+        <input class="form-control" @bind="newTitle" @bind:event="oninput" placeholder="New title..." />
     </div>
     <div class="col-auto">
         <button class="btn btn-primary" @onclick="AddAsync" disabled="@VM.IsSaving || string.IsNullOrWhiteSpace(newTitle)">Add</button>

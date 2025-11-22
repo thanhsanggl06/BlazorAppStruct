@@ -1,8 +1,8 @@
-@page "/todo-ef-demo"
-@inject Client.ViewModels.TodoEfViewModel VM
+@page "/todo-extsp-demo"
+@inject Client.ViewModels.TodoExtSpViewModel VM
 @using Shared.Entities.Dtos
 
-<h3>Todo EF Demo</h3>
+<h3>Todo Stored Procedure (EFExtensions) Demo</h3>
 
 <div class="row g-2 mb-3">
     <div class="col-auto">
@@ -15,7 +15,7 @@
         <input class="form-control" @bind="newTitle" @bind:event="oninput" placeholder="New title..." />
     </div>
     <div class="col-auto">
-        <button class="btn btn-primary" @onclick="AddAsync" disabled="@(VM.IsSaving || string.IsNullOrWhiteSpace(newTitle))">Add</button>
+        <button class="btn btn-primary" @onclick="AddAsync" disabled="@(!CanAdd)">Add</button>
     </div>
 </div>
 
@@ -66,6 +66,7 @@ else
 @code {
     private string? newTitle;
     private string? searchText;
+    private bool CanAdd => !VM.IsSaving && !string.IsNullOrWhiteSpace(newTitle);
 
     protected override async Task OnInitializedAsync()
     {

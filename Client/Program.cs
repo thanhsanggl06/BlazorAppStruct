@@ -23,4 +23,8 @@ builder.Services.AddScoped<TodoSpViewModel>();
 builder.Services.AddScoped<ITodoEfApi, TodoEfApi>();
 builder.Services.AddScoped<TodoEfViewModel>();
 
+// EFExtensions SP demo services
+builder.Services.AddScoped<ITodoExtSpApi, TodoExtSpApi>();
+builder.Services.AddScoped<TodoExtSpViewModel>();
+
 await builder.Build().RunAsync();
