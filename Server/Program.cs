@@ -3,8 +3,8 @@ using Services.Implements;
 using Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
-using Server.Middlewares; // added
-using Microsoft.AspNetCore.HttpOverrides; // forwarded headers
+using Server.Middlewares;
+using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +25,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<ITodoService, TodoService>();
 builder.Services.AddScoped<ITodoSpService, TodoSpService>();
 builder.Services.AddScoped<ITodoEfService, TodoEfService>();
-builder.Services.AddScoped<ITodoExtSpService, TodoExtSpService>(); // new EFExtensions-based SP service
+builder.Services.AddScoped<ITodoExtSpService, TodoExtSpService>();
+builder.Services.AddScoped<ITodoManualConnDemoService, TodoManualConnDemoService>();
 
 // SP executors
 builder.Services.AddScoped<IStoredProcedureExecutor, StoredProcedureExecutor>(); // EF FromSql executor
@@ -38,7 +39,6 @@ builder.Services.AddHttpClient();
 builder.Services.Configure<ForwardedHeadersOptions>(opts =>
 {
     opts.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-    // Có thể thêm KnownProxies / KnownNetworks nếu cần bảo mật chặt
 });
 
 // Caching for reverse DNS results

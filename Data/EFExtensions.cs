@@ -188,20 +188,28 @@ namespace Data
 
                         object val = dr.GetValue(column.ColumnOrdinal.Value);
 
-                        // Handle DateOnly and TimeOnly conversions, not supported directly by DbDataReader
+                        // DateOnly / TimeOnly (DateTime) and DateTimeOffset conversions
                         if (val != DBNull.Value)
                         {
                             var propertyType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
                             if (val is DateTime dateTime)
                             {
                                 if (propertyType == typeof(DateOnly))
-                                {
                                     val = DateOnly.FromDateTime(dateTime);
-                                }
                                 else if (propertyType == typeof(TimeOnly))
-                                {
                                     val = TimeOnly.FromDateTime(dateTime);
-                                }
+                                // else keep DateTime as is
+                            }
+                            else if (val is DateTimeOffset dto)
+                            {
+                                if (propertyType == typeof(DateTimeOffset))
+                                    val = dto; // direct
+                                else if (propertyType == typeof(DateTime))
+                                    val = dto.UtcDateTime; // normalize
+                                else if (propertyType == typeof(DateOnly))
+                                    val = DateOnly.FromDateTime(dto.UtcDateTime);
+                                else if (propertyType == typeof(TimeOnly))
+                                    val = TimeOnly.FromDateTime(dto.UtcDateTime);
                             }
                         }
 
@@ -250,8 +258,9 @@ namespace Data
 
             using (command)
             {
-                if (manageConnection && command.Connection.State == ConnectionState.Closed)
-                    command.Connection.Open();
+                var conn = command.Connection ?? throw new InvalidOperationException("DbCommand.Connection is null");
+                if (manageConnection && conn.State == ConnectionState.Closed)
+                    conn.Open();
                 try
                 {
                     using (var reader = command.ExecuteReader(commandBehaviour))
@@ -264,7 +273,7 @@ namespace Data
                 {
                     if (manageConnection)
                     {
-                        command.Connection.Close();
+                        conn.Close();
                     }
                 }
             }
@@ -290,8 +299,9 @@ namespace Data
 
             using (command)
             {
-                if (manageConnection && command.Connection.State == System.Data.ConnectionState.Closed)
-                    await command.Connection.OpenAsync(ct).ConfigureAwait(false);
+                var conn = command.Connection ?? throw new InvalidOperationException("DbCommand.Connection is null");
+                if (manageConnection && conn.State == System.Data.ConnectionState.Closed)
+                    await conn.OpenAsync(ct).ConfigureAwait(false);
                 try
                 {
                     using (var reader = await command.ExecuteReaderAsync(commandBehaviour, ct)
@@ -305,7 +315,7 @@ namespace Data
                 {
                     if (manageConnection)
                     {
-                        command.Connection.Close();
+                        conn.Close();
                     }
                 }
             }
@@ -331,8 +341,9 @@ namespace Data
 
             using (command)
             {
-                if (manageConnection && command.Connection.State == ConnectionState.Closed)
-                    await command.Connection.OpenAsync(ct).ConfigureAwait(false);
+                var conn = command.Connection ?? throw new InvalidOperationException("DbCommand.Connection is null");
+                if (manageConnection && conn.State == ConnectionState.Closed)
+                    await conn.OpenAsync(ct).ConfigureAwait(false);
                 try
                 {
                     using (var reader = await command.ExecuteReaderAsync(commandBehaviour, ct)
@@ -348,7 +359,7 @@ namespace Data
                 {
                     if (manageConnection)
                     {
-                        command.Connection.Close();
+                        conn.Close();
                     }
                 }
             }
@@ -366,9 +377,10 @@ namespace Data
 
             using (command)
             {
-                if (command.Connection.State == ConnectionState.Closed)
+                var conn = command.Connection ?? throw new InvalidOperationException("DbCommand.Connection is null");
+                if (conn.State == ConnectionState.Closed)
                 {
-                    command.Connection.Open();
+                    conn.Open();
                 }
 
                 try
@@ -379,7 +391,7 @@ namespace Data
                 {
                     if (manageConnection)
                     {
-                        command.Connection.Close();
+                        conn.Close();
                     }
                 }
             }
@@ -401,9 +413,10 @@ namespace Data
 
             using (command)
             {
-                if (command.Connection.State == ConnectionState.Closed)
+                var conn = command.Connection ?? throw new InvalidOperationException("DbCommand.Connection is null");
+                if (conn.State == ConnectionState.Closed)
                 {
-                    await command.Connection.OpenAsync(ct).ConfigureAwait(false);
+                    await conn.OpenAsync(ct).ConfigureAwait(false);
                 }
 
                 try
@@ -414,7 +427,7 @@ namespace Data
                 {
                     if (manageConnection)
                     {
-                        command.Connection.Close();
+                        conn.Close();
                     }
                 }
             }
