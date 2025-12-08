@@ -1,0 +1,261 @@
+@page "/checklist-demo"
+@using Components
+@inject IJSRuntime JS
+
+<PageTitle>Checklist Dropdown Demo</PageTitle>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Checklist Dropdown Component Demo</h1>
+
+    <div class="row g-4">
+        <!-- Example 1: Multiple Select with Search -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Multi-Select with Search</h5>
+                </div>
+                <div class="card-body">
+                    <ChecklistDropdown TItem="string"
+                                       Items="@Countries"
+                                       @bind-SelectedValues="@SelectedCountries"
+                                       @bind-SelectedValues:after="@OnCountriesChanged"
+                                       ShowSearch="true"
+                                       AllowSelectAll="true"
+                                       MaxHeight="250"
+                                       PlaceholderText="Ch?n qu?c gia..." />
+                    
+                    <div class="mt-3">
+                        <strong>Ð? ch?n:</strong>
+                        <p>@string.Join(", ", SelectedCountries)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example 2: Single Select -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Single Select (Radio)</h5>
+                </div>
+                <div class="card-body">
+                    <ChecklistDropdown TItem="string"
+                                       Items="@Colors"
+                                       @bind-SelectedValues="@SelectedColors"
+                                       IsSingleSelect="true"
+                                       PlaceholderText="Ch?n màu..."
+                                       ShowClearButton="true" />
+                    
+                    <div class="mt-3">
+                        <strong>Màu ð? ch?n:</strong>
+                        <p>@(SelectedColors.FirstOrDefault() ?? "Chýa ch?n")</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example 3: Custom Object with Template -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Custom Object with Template</h5>
+                </div>
+                <div class="card-body">
+                    <ChecklistDropdown TItem="Person"
+                                       Items="@People"
+                                       @bind-SelectedValues="@SelectedPeopleIds"
+                                       ValueSelector="@(p => p.Id.ToString())"
+                                       TextSelector="@(p => p.Name)"
+                                       ShowSearch="true"
+                                       AllowSelectAll="true"
+                                       MaxHeight="200">
+                        <ItemTemplate>
+                            <div class="d-flex align-items-center" title="@context.Name - @context.Email">
+                                <div class="me-2">
+                                    <span class="badge bg-primary rounded-pill">@context.Age</span>
+                                </div>
+                                <div style="overflow: hidden;">
+                                    <strong style="display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">@context.Name</strong>
+                                    <small class="text-muted" style="display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">@context.Email</small>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </ChecklistDropdown>
+                    
+                    <div class="mt-3">
+                        <strong>IDs ð? ch?n:</strong>
+                        <p>@string.Join(", ", SelectedPeopleIds)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example 4: Custom Separator -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Custom Separator & Max Display</h5>
+                </div>
+                <div class="card-body">
+                    <ChecklistDropdown TItem="string"
+                                       Items="@Technologies"
+                                       @bind-SelectedValues="@SelectedTechs"
+                                       Separator=" | "
+                                       MaxDisplayItems="2"
+                                       SelectedItemsText="{0} công ngh?"
+                                       ShowSearch="true"
+                                       SearchPlaceholder="T?m công ngh?..."
+                                       PlaceholderText="Ch?n công ngh?..." />
+                    
+                    <div class="mt-3">
+                        <strong>Công ngh? ð? ch?n:</strong>
+                        <ul>
+                            @foreach (var tech in SelectedTechs)
+                            {
+                                <li>@tech</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example 5: Long Text with Tooltip -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Long Text with Ellipsis & Tooltip</h5>
+                </div>
+                <div class="card-body">
+                    <ChecklistDropdown TItem="string"
+                                       Items="@LongTextItems"
+                                       @bind-SelectedValues="@SelectedLongTexts"
+                                       ShowSearch="true"
+                                       AllowSelectAll="true"
+                                       MaxDisplayItems="1"
+                                       SelectedItemsText="{0} m?c ð? ch?n"
+                                       PlaceholderText="Ch?n mô t? dài..." />
+                    
+                    <div class="mt-3">
+                        <strong>Ð? ch?n:</strong>
+                        <div class="small">
+                            @foreach (var text in SelectedLongTexts)
+                            {
+                                <div class="mb-1 p-1 bg-light rounded" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="@text">
+                                    @text
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example 6: No Search, Long List -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Long List with Scroll</h5>
+                </div>
+                <div class="card-body">
+                    <ChecklistDropdown TItem="string"
+                                       Items="@GenerateLongList()"
+                                       @bind-SelectedValues="@SelectedItems"
+                                       AllowSelectAll="true"
+                                       MaxHeight="200"
+                                       PlaceholderText="Ch?n items..."
+                                       SelectedItemsText="{0} items ð? ch?n" />
+                    
+                    <div class="mt-3">
+                        <strong>S? lý?ng ð? ch?n:</strong>
+                        <p>@SelectedItems.Count</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    // Example 1: Simple string list
+    private List<string> Countries = new()
+    {
+        "Vi?t Nam", "Hoa K?", "Nh?t B?n", "Hàn Qu?c", "Trung Qu?c",
+        "Thái Lan", "Singapore", "Malaysia", "Indonesia", "Philippines",
+        "Úc", "Canada", "Anh", "Pháp", "Ð?c"
+    };
+    private List<string> SelectedCountries = new();
+
+    // Example 2: Single select
+    private List<string> Colors = new()
+    {
+        "Ð?", "Xanh dýõng", "Xanh lá", "Vàng", "Cam",
+        "Tím", "H?ng", "Nâu", "Ðen", "Tr?ng"
+    };
+    private List<string> SelectedColors = new();
+
+    // Example 3: Custom object
+    public class Person
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public int Age { get; set; }
+    }
+
+    private List<Person> People = new()
+    {
+        new Person { Id = 1, Name = "Nguy?n Vãn A", Email = "nva@example.com", Age = 25 },
+        new Person { Id = 2, Name = "Tr?n Th? B", Email = "ttb@example.com", Age = 30 },
+        new Person { Id = 3, Name = "Lê Vãn C", Email = "lvc@example.com", Age = 28 },
+        new Person { Id = 4, Name = "Ph?m Th? D", Email = "ptd@example.com", Age = 35 },
+        new Person { Id = 5, Name = "Hoàng Vãn E", Email = "hve@example.com", Age = 22 }
+    };
+    private List<string> SelectedPeopleIds = new();
+
+    // Example 4: Technologies
+    private List<string> Technologies = new()
+    {
+        "C#", "JavaScript", "TypeScript", "Python", "Java",
+        "Blazor", "React", "Angular", "Vue.js", "ASP.NET Core",
+        "Entity Framework", "SQL Server", "PostgreSQL", "MongoDB",
+        "Docker", "Kubernetes", "Azure", "AWS"
+    };
+    private List<string> SelectedTechs = new();
+
+    // Example 5: Long text items
+    private List<string> LongTextItems = new()
+    {
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium"
+    };
+    private List<string> SelectedLongTexts = new();
+
+    // Example 6: Long list
+    private List<string> SelectedItems = new();
+
+    private List<string> GenerateLongList()
+    {
+        var list = new List<string>();
+        for (int i = 1; i <= 50; i++)
+        {
+            list.Add($"Item {i:D2}");
+        }
+        return list;
+    }
+
+    protected override void OnInitialized()
+    {
+        // Pre-select some values for demo
+        SelectedCountries = new List<string> { "Vi?t Nam", "Hoa K?" };
+        SelectedColors = new List<string> { "Xanh dýõng" };
+    }
+
+    private async Task OnCountriesChanged()
+    {
+        await JS.InvokeVoidAsync("alert", $"Selected countries: {string.Join(", ", SelectedCountries)}");
+    }
+}

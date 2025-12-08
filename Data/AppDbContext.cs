@@ -8,6 +8,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 {
     public DbSet<TodoItem> TodoItems => Set<TodoItem>();
     public DbSet<TodoItemDto> TodoItemDtos => Set<TodoItemDto>(); // keyless query type for SP/FromSql
+    public DbSet<ApplicationLog> ApplicationLogs => Set<ApplicationLog>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -28,5 +29,24 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         dto.Property(p => p.Title);
         dto.Property(p => p.IsDone);
         dto.Property(p => p.CreatedAt);
+
+        // ApplicationLog entity mapping
+        var log = modelBuilder.Entity<ApplicationLog>();
+        log.ToTable("ApplicationLogs");
+        log.HasKey(x => x.Id);
+        log.Property(x => x.Timestamp).IsRequired();
+        log.Property(x => x.Level).IsRequired().HasMaxLength(50);
+        log.Property(x => x.Message).HasMaxLength(-1); // NVARCHAR(MAX)
+        log.Property(x => x.MessageTemplate).HasMaxLength(-1);
+        log.Property(x => x.Exception).HasMaxLength(-1);
+        log.Property(x => x.Properties).HasMaxLength(-1);
+        log.Property(x => x.LogEvent).HasMaxLength(-1);
+        log.Property(x => x.CorrelationId).HasMaxLength(100);
+        log.Property(x => x.RequestPath).HasMaxLength(500);
+        log.Property(x => x.RequestMethod).HasMaxLength(20);
+        log.Property(x => x.SourceContext).HasMaxLength(500);
+        log.Property(x => x.MachineName).HasMaxLength(100);
+        log.Property(x => x.EnvironmentName).HasMaxLength(50);
+        log.Property(x => x.ApplicationName).HasMaxLength(100);
     }
 }
