@@ -1,9 +1,12 @@
 ﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
         <a class="navbar-brand" href="">Client</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="d-flex gap-2 align-items-center">
+            <Components.LanguageSelector />
+            <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
     </div>
 </div>
 

@@ -1,8 +1,16 @@
 ﻿@page "/"
+@inject Microsoft.Extensions.Localization.IStringLocalizer<Client.Pages.Home> L
 
-<PageTitle>Home</PageTitle>
+<PageTitle>@L["Title"]</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>@L["Title"]</h1>
+<p>@L["Description"]</p>
 
-Welcome to your new app. aaaaa   asasaâsasas
-aaa têtte asaasasas
+<button class="btn btn-primary" @onclick="OnClick">@L["ButtonText"]</button>
+
+@code {
+    private void OnClick()
+    {
+        // demo only
+    }
+}

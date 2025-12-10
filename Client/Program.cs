@@ -3,12 +3,17 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Client;
 using Client.Services;
 using Client.ViewModels;
+using System.Globalization;
+using Microsoft.JSInterop;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+// Localization
+builder.Services.AddLocalization();
 
 // Api infrastructure
 builder.Services.AddScoped<IApiClient, ApiClient>();
@@ -27,4 +32,23 @@ builder.Services.AddScoped<TodoEfViewModel>();
 builder.Services.AddScoped<ITodoExtSpApi, TodoExtSpApi>();
 builder.Services.AddScoped<TodoExtSpViewModel>();
 
-await builder.Build().RunAsync();
+var host = builder.Build();
+
+// Initialize culture from localStorage before running the app
+var js = host.Services.GetRequiredService<IJSRuntime>();
+var savedCulture = await js.InvokeAsync<string>("blazorCulture.get");
+if (!string.IsNullOrWhiteSpace(savedCulture))
+{
+    try
+    {
+        var culture = new CultureInfo(savedCulture);
+        CultureInfo.DefaultThreadCurrentCulture = culture;
+        CultureInfo.DefaultThreadCurrentUICulture = culture;
+    }
+    catch
+    {
+        // fallback to default if invalid
+    }
+}
+
+await host.RunAsync();

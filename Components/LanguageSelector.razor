@@ -1,0 +1,32 @@
+@using System.Globalization
+@using Microsoft.JSInterop
+
+@inject IJSRuntime JS
+
+<select class="form-select form-select-sm w-auto" @onchange="OnChange" value="@current" aria-label="Select language">
+    <option value="vi-VN">???? Ti?ng Vi?t</option>
+    <option value="en-US">???? English</option>
+</select>
+
+@code {
+    private string current = CultureInfo.CurrentUICulture.Name;
+
+    private async Task OnChange(ChangeEventArgs e)
+    {
+        var cultureName = e.Value?.ToString() ?? "en-US";
+        try
+        {
+            var culture = new CultureInfo(cultureName);
+            CultureInfo.DefaultThreadCurrentCulture = culture;
+            CultureInfo.DefaultThreadCurrentUICulture = culture;
+            await JS.InvokeVoidAsync("blazorCulture.set", cultureName);
+            // Force a reload to apply culture across all components
+            await JS.InvokeVoidAsync("eval", "location.reload()")
+                ;
+        }
+        catch
+        {
+            // ignore invalid culture
+        }
+    }
+}
