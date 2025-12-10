@@ -1,0 +1,461 @@
+﻿@typeparam TItem
+@using Microsoft.AspNetCore.Components.Web
+
+<div class="checklist-dropdown @CssClass" @ref="_dropdownRef">
+    <div class="dropdown">
+        <button class="btn btn-sm btn-outline-secondary dropdown-toggle w-100 text-start @(IsDisabled ? "disabled" : "")"
+                type="button"
+                id="@_dropdownId"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                disabled="@IsDisabled"
+                @onclick="OnDropdownToggle"
+                title="@GetSelectedText()">
+            <span class="selected-text">@GetSelectedText()</span>
+        </button>
+
+        <ul class="dropdown-menu w-100 @(ShowSearch ? "with-search" : "")"
+            aria-labelledby="@_dropdownId"
+            style="@GetDropdownStyle()">
+
+            @if (ShowSearch)
+            {
+                <li class="px-2 py-2 search-container">
+                    <input type="text"
+                           class="form-control form-control-sm"
+                           placeholder="@SearchPlaceholder"
+                           @bind="SearchText"
+                           @bind:event="oninput"
+                           @onclick:stopPropagation="true" />
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+            }
+
+            @if (AllowSelectAll && !IsSingleSelect)
+            {
+                <li class="py-1">
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               id="@($"{_dropdownId}_selectall")"
+                               checked="@IsAllSelected()"
+                               @onchange="ToggleSelectAll" />
+                        <label class="form-check-label" for="@($"{_dropdownId}_selectall")">
+                            @SelectAllText
+                        </label>
+                    </div>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+            }
+
+            <li class="scrollable-list" style="@GetScrollStyle()">
+                <ul class="list-unstyled mb-0">
+                    @foreach (var item in GetFilteredItems())
+                    {
+                        var itemValue = GetItemValue(item);
+                        var itemText = GetItemText(item);
+                        var isSelected = IsItemSelected(item);
+                        var itemId = $"{_dropdownId}_item_{itemValue}";
+
+                        <li class="px-2 py-1">
+                            @if (IsSingleSelect)
+                            {
+                                <div class="single-select-item @(isSelected ? "selected" : string.Empty)"
+                                     title="@itemText"
+                                     role="button"
+                                     tabindex="0"
+                                     @onclick="@(() => OnItemToggle(itemValue))">
+                                    @if (ItemTemplate != null)
+                                    {
+                                        @ItemTemplate(item)
+                                    }
+                                    else
+                                    {
+                                        <span class="item-text">@itemText</span>
+                                    }
+                                    @if (isSelected)
+                                    {
+                                        <span class="checkmark" aria-hidden="true">?</span>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="@itemId"
+                                           checked="@isSelected"
+                                           @onchange="@(() => OnItemToggle(itemValue))" />
+                                    <label class="form-check-label item-label"
+                                           for="@itemId"
+                                           title="@(ItemTemplate == null ? itemText : "")">
+                                        @if (ItemTemplate != null)
+                                        {
+                                            @ItemTemplate(item)
+                                        }
+                                        else
+                                        {
+                                            <span class="item-text">@itemText</span>
+                                        }
+                                    </label>
+                                </div>
+                            }
+                        </li>
+                    }
+
+                    @if (!GetFilteredItems().Any())
+                    {
+                        <li class="px-2 py-2 text-muted text-center">
+                            @NoResultsText
+                        </li>
+                    }
+                </ul>
+            </li>
+
+            @if (ShowClearButton && HasSelection())
+            {
+                <li><hr class="dropdown-divider" /></li>
+                <li class="px-2 py-2">
+                    <button type="button"
+                            class="btn btn-sm btn-outline-danger w-100"
+                            @onclick="ClearSelection"
+                            @onclick:stopPropagation="true">
+                        @ClearButtonText
+                    </button>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+@code {
+    private ElementReference _dropdownRef;
+    private string _dropdownId = Guid.NewGuid().ToString("N");
+    private string _searchText = string.Empty;
+
+    /// <summary>
+    /// Danh sách các items đa cung cấp
+    /// </summary>
+    [Parameter]
+    public IEnumerable<TItem> Items { get; set; } = new List<TItem>();
+
+    /// <summary>
+    /// Value duoc chon
+    /// </summary>
+    [Parameter]
+    public List<string> SelectedValues { get; set; } = new List<string>();
+
+    /// <summary>
+    /// Cho phép bind/tra ve toan bo item da chon
+    /// </summary>
+    [Parameter]
+    public List<TItem> SelectedItems { get; set; } = new List<TItem>();
+
+    /// <summary>
+    /// Callback khi selection thay đoi (values)
+    /// </summary>
+    [Parameter]
+    public EventCallback<List<string>> SelectedValuesChanged { get; set; }
+
+    /// <summary>
+    /// Callback khi selection thay đoi (items)
+    /// </summary>
+    [Parameter]
+    public EventCallback<List<TItem>> SelectedItemsChanged { get; set; }
+
+    /// <summary>
+    /// Hàm lay value tu item
+    /// </summary>
+    [Parameter]
+    public Func<TItem, string> ValueSelector { get; set; } = item => item?.ToString() ?? string.Empty;
+
+    /// <summary>
+    /// Hàm lay text hien thi tu item
+    /// </summary>
+    [Parameter]
+    public Func<TItem, string> TextSelector { get; set; } = item => item?.ToString() ?? string.Empty;
+
+    /// <summary>
+    /// Template tuy chinh cho item
+    /// </summary>
+    [Parameter]
+    public RenderFragment<TItem>? ItemTemplate { get; set; }
+
+    /// <summary>
+    /// Cho phep chon 1
+    /// </summary>
+    [Parameter]
+    public bool IsSingleSelect { get; set; } = false;
+
+    /// <summary>
+    /// ky tu phan cach giua cac item da chon
+    /// </summary>
+    [Parameter]
+    public string Separator { get; set; } = ", ";
+
+    /// <summary>
+    /// Text hien thi khi chua chon item nao
+    /// </summary>
+    [Parameter]
+    public string PlaceholderText { get; set; } = "Select";
+
+    /// <summary>
+    /// Text hien thi khi chon nhieu item
+    /// </summary>
+    [Parameter]
+    public string SelectedItemsText { get; set; } = "{0} Item selected";
+
+    /// <summary>
+    /// So luong hien thi toi da truoc khi hien thi tom tat
+    /// </summary>
+    [Parameter]
+    public int MaxDisplayItems { get; set; } = 3;
+
+    /// <summary>
+    /// Hien thi tom tat khi vuot qua so luong MaxDisplayItems
+    /// </summary>
+    [Parameter]
+    public bool UseSummaryWhenExceeds { get; set; } = false;
+
+    /// <summary>
+    /// Hien thi ô tim kiem
+    /// </summary>
+    [Parameter]
+    public bool ShowSearch { get; set; } = false;
+
+    /// <summary>
+    /// Placeholder cho ô tim kiem
+    /// </summary>
+    [Parameter]
+    public string SearchPlaceholder { get; set; } = "Search...";
+
+    /// <summary>
+    /// Cho phép chon tat cả
+    /// </summary>
+    [Parameter]
+    public bool AllowSelectAll { get; set; } = false;
+
+    /// <summary>
+    /// Text cho nút Select All
+    /// </summary>
+    [Parameter]
+    public string SelectAllText { get; set; } = "Select all";
+
+    /// <summary>
+    /// Hien thi nut xóa lựa chọn
+    /// </summary>
+    [Parameter]
+    public bool ShowClearButton { get; set; } = true;
+
+    /// <summary>
+    /// Text cho nút xóa
+    /// </summary>
+    [Parameter]
+    public string ClearButtonText { get; set; } = "Clear selection";
+
+    /// <summary>
+    /// Text hien thi khi khong tim thay ket qua
+    /// </summary>
+    [Parameter]
+    public string NoResultsText { get; set; } = "Result not found";
+
+    /// <summary>
+    /// Chieu cao toi da cua dropdown (px)
+    /// </summary>
+    [Parameter]
+    public int MaxHeight { get; set; } = 300;
+
+    /// <summary>
+    /// CSS class tuy chinh cho dropdown
+    /// </summary>
+    [Parameter]
+    public string CssClass { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Disable dropdown
+    /// </summary>
+    [Parameter]
+    public bool IsDisabled { get; set; } = false;
+
+    private string SearchText
+    {
+        get => _searchText;
+        set
+        {
+            _searchText = value;
+            StateHasChanged();
+        }
+    }
+
+    private string GetItemValue(TItem item) => ValueSelector(item);
+    private string GetItemText(TItem item) => TextSelector(item);
+
+    private bool HasSelection() => SelectedValues.Any() || SelectedItems.Any();
+    private int GetSelectedCount()
+    {
+        if (SelectedItems.Any()) return SelectedItems.Count;
+        return SelectedValues.Count;
+    }
+
+    private bool IsItemSelected(TItem item)
+    {
+        var value = GetItemValue(item);
+        if (SelectedValues.Contains(value)) return true;
+        return SelectedItems.Any(si => GetItemValue(si) == value);
+    }
+
+    private IEnumerable<TItem> GetFilteredItems()
+    {
+        if (string.IsNullOrWhiteSpace(SearchText))
+            return Items;
+
+        return Items.Where(item =>
+        {
+            var text = GetItemText(item);
+            return text.Contains(SearchText, StringComparison.OrdinalIgnoreCase);
+        });
+    }
+
+    private string GetSelectedText()
+    {
+        if (!HasSelection())
+            return PlaceholderText;
+
+        if (IsSingleSelect)
+        {
+            // Ưu tiên SelectedItems nếu có
+            var selectedItem = SelectedItems.FirstOrDefault();
+            if (selectedItem is not null)
+            {
+                return GetItemText(selectedItem);
+            }
+
+            // fallback theo SelectedValues
+            var singleValue = SelectedValues.FirstOrDefault();
+            var itemByValue = Items.FirstOrDefault(i => GetItemValue(i) == singleValue);
+            return itemByValue != null ? GetItemText(itemByValue) : PlaceholderText;
+        }
+
+        // Multi select
+        var selectedItems = SelectedItems.Any()
+            ? SelectedItems
+            : Items.Where(i => SelectedValues.Contains(GetItemValue(i))).ToList();
+
+        if (UseSummaryWhenExceeds && GetSelectedCount() > MaxDisplayItems)
+            return string.Format(SelectedItemsText, GetSelectedCount());
+
+        var selectedTexts = selectedItems.Select(GetItemText);
+        return string.Join(Separator, selectedTexts);
+    }
+
+    private async Task OnItemToggle(string value)
+    {
+        // Tìm item tương ứng (n?u có)
+        var item = Items.FirstOrDefault(i => GetItemValue(i) == value);
+
+        if (IsSingleSelect)
+        {
+            SelectedValues.Clear();
+            SelectedItems.Clear();
+
+            SelectedValues.Add(value);
+            if (item is not null)
+            {
+                SelectedItems.Add(item);
+            }
+        }
+        else
+        {
+            // toggle trong SelectedValues
+            if (SelectedValues.Contains(value))
+                SelectedValues.Remove(value);
+            else
+                SelectedValues.Add(value);
+
+            // toggle trong SelectedItems (theo ValueSelector)
+            if (item is not null)
+            {
+                var existed = SelectedItems.Any(si => GetItemValue(si) == value);
+                if (existed)
+                {
+                    SelectedItems.RemoveAll(si => GetItemValue(si) == value);
+                }
+                else
+                {
+                    SelectedItems.Add(item);
+                }
+            }
+            else
+            {
+                // n?u không tìm th?y item, ít nh?t vẫn duy trì SelectedValues
+            }
+        }
+
+        // raise 2-way binding cho cả values và items
+        await SelectedValuesChanged.InvokeAsync(SelectedValues);
+        await SelectedItemsChanged.InvokeAsync(SelectedItems);
+    }
+
+    private bool IsAllSelected()
+    {
+        var filteredItems = GetFilteredItems().ToList();
+        if (!filteredItems.Any()) return false;
+        return filteredItems.All(item => IsItemSelected(item));
+    }
+
+    private async Task ToggleSelectAll(ChangeEventArgs e)
+    {
+        var isChecked = (bool)(e.Value ?? false);
+        var filteredItems = GetFilteredItems().ToList();
+
+        if (isChecked)
+        {
+            foreach (var item in filteredItems)
+            {
+                var value = GetItemValue(item);
+                if (!SelectedValues.Contains(value))
+                    SelectedValues.Add(value);
+
+                if (!SelectedItems.Any(si => GetItemValue(si) == value))
+                    SelectedItems.Add(item);
+            }
+        }
+        else
+        {
+            foreach (var item in filteredItems)
+            {
+                var value = GetItemValue(item);
+                SelectedValues.Remove(value);
+                SelectedItems.RemoveAll(si => GetItemValue(si) == value);
+            }
+        }
+
+        await SelectedValuesChanged.InvokeAsync(SelectedValues);
+        await SelectedItemsChanged.InvokeAsync(SelectedItems);
+    }
+
+    private async Task ClearSelection()
+    {
+        SelectedValues.Clear();
+        SelectedItems.Clear();
+        await SelectedValuesChanged.InvokeAsync(SelectedValues);
+        await SelectedItemsChanged.InvokeAsync(SelectedItems);
+    }
+
+    private void OnDropdownToggle()
+    {
+        // Bootstrap handles the toggle, but we can use this for custom logic
+    }
+
+    private string GetDropdownStyle() => $"max-height: {MaxHeight}px;";
+
+    private string GetScrollStyle()
+    {
+        var searchHeight = ShowSearch ? 60 : 0;
+        var selectAllHeight = AllowSelectAll && !IsSingleSelect ? 40 : 0;
+        var clearButtonHeight = ShowClearButton ? 50 : 0;
+        var maxScrollHeight = MaxHeight - searchHeight - selectAllHeight - clearButtonHeight - 10;
+        return $"max-height: {maxScrollHeight}px; overflow-y: auto;";
+    }
+}

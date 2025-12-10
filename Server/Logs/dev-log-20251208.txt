@@ -2142,3 +2142,963 @@
     Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
     Request:  /_framework/blazor-hotreload | IP:  | UserAgent: 
     Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBGFC4687:00000003","ConnectionId":"0HNHMBGFC4687","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":21796,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:30.069] [INF] Application started successfully on Development
+    Source:  | CorrelationId: 
+    Request:   | IP:  | UserAgent: 
+    Properties: {"MachineName":"MSI","EnvironmentName":"Development","ThreadId":2,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:32.461] [INF] Request starting HTTP/1.1 GET http://localhost/_framework/debug/ws-proxy?browser=ws%3A%2F%2F127.0.0.1%3A56623%2Fdevtools%2Fbrowser%2F710a146b-7701-43c1-bccc-1fc4e80124a1 - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/debug/ws-proxy | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHB:00000001","ConnectionId":"0HNHMBHLQPDHB","MachineName":"MSI","EnvironmentName":"Development","ThreadId":8,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:33.028] [INF] Request finished HTTP/1.1 GET http://localhost/_framework/debug/ws-proxy?browser=ws%3A%2F%2F127.0.0.1%3A56623%2Fdevtools%2Fbrowser%2F710a146b-7701-43c1-bccc-1fc4e80124a1 - 302 0 null 582.0002ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/debug/ws-proxy | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHB:00000001","ConnectionId":"0HNHMBHLQPDHB","MachineName":"MSI","EnvironmentName":"Development","ThreadId":8,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:33.641] [INF] Request starting HTTP/1.1 GET http://localhost:5255/Client.styles.css - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /Client.styles.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHC:00000001","ConnectionId":"0HNHMBHLQPDHC","MachineName":"MSI","EnvironmentName":"Development","ThreadId":8,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:33.734] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor.webassembly.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.webassembly.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHD:00000001","ConnectionId":"0HNHMBHLQPDHD","MachineName":"MSI","EnvironmentName":"Development","ThreadId":14,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:33.735] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/aspnetcore-browser-refresh.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/aspnetcore-browser-refresh.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHE:00000001","ConnectionId":"0HNHMBHLQPDHE","MachineName":"MSI","EnvironmentName":"Development","ThreadId":9,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:33.747] [WRN] Failed to determine the https port for redirect.
+    Source: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware | CorrelationId: 
+    Request:  /Client.styles.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"RequestId":"0HNHMBHLQPDHC:00000001","ConnectionId":"0HNHMBHLQPDHC","MachineName":"MSI","EnvironmentName":"Development","ThreadId":8,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:33.765] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/aspnetcore-browser-refresh.js - 200 16497 application/javascript; charset=utf-8 30.7325ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/aspnetcore-browser-refresh.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHE:00000001","ConnectionId":"0HNHMBHLQPDHE","MachineName":"MSI","EnvironmentName":"Development","ThreadId":9,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:33.800] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_vs/browserLink - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_vs/browserLink | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHE:00000002","ConnectionId":"0HNHMBHLQPDHE","MachineName":"MSI","EnvironmentName":"Development","ThreadId":9,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:33.827] [INF] HTTP GET /Client.styles.css → 304 in 65.6127ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: 34747440-fbda-4198-af79-cf4bccd2949d
+    Request: GET /Client.styles.css | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"text/css","RequestId":"0HNHMBHLQPDHC:00000001","ConnectionId":"0HNHMBHLQPDHC","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:33.835] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor.webassembly.js.gz - 304 null text/javascript 100.9435ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.webassembly.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHD:00000001","ConnectionId":"0HNHMBHLQPDHD","MachineName":"MSI","EnvironmentName":"Development","ThreadId":16,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:33.835] [INF] Request finished HTTP/1.1 GET http://localhost:5255/Client.styles.css - 304 null text/css 195.2985ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /Client.styles.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHC:00000001","ConnectionId":"0HNHMBHLQPDHC","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:33.843] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_content/Components/Components.yb4wommtp0.bundle.scp.css - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/Components/Components.yb4wommtp0.bundle.scp.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHC:00000002","ConnectionId":"0HNHMBHLQPDHC","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:33.846] [INF] HTTP GET /_content/Components/Components.yb4wommtp0.bundle.scp.css → 304 in 0.3529ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: f831a413-e996-4e43-9f45-6f5c5c207d11
+    Request: GET /_content/Components/Components.yb4wommtp0.bundle.scp.css | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"text/css","RequestId":"0HNHMBHLQPDHC:00000002","ConnectionId":"0HNHMBHLQPDHC","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:33.849] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_content/Components/Components.yb4wommtp0.bundle.scp.css - 304 null text/css 6.7441ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/Components/Components.yb4wommtp0.bundle.scp.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHC:00000002","ConnectionId":"0HNHMBHLQPDHC","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:33.857] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHC:00000003","ConnectionId":"0HNHMBHLQPDHC","MachineName":"MSI","EnvironmentName":"Development","ThreadId":16,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:33.861] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 60.2164ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_vs/browserLink | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHE:00000002","ConnectionId":"0HNHMBHLQPDHE","MachineName":"MSI","EnvironmentName":"Development","ThreadId":9,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:33.865] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js.gz - 304 null text/javascript 7.7136ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHC:00000003","ConnectionId":"0HNHMBHLQPDHC","MachineName":"MSI","EnvironmentName":"Development","ThreadId":16,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:34.219] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js.map - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js.map | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHH:00000001","ConnectionId":"0HNHMBHLQPDHH","MachineName":"MSI","EnvironmentName":"Development","ThreadId":16,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:34.231] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js.map.gz - 200 21068 text/plain 12.0835ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js.map | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHH:00000001","ConnectionId":"0HNHMBHLQPDHH","MachineName":"MSI","EnvironmentName":"Development","ThreadId":9,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:34.238] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor.boot.json - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.boot.json | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHC:00000004","ConnectionId":"0HNHMBHLQPDHC","MachineName":"MSI","EnvironmentName":"Development","ThreadId":16,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:34.242] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor.boot.json.gz - 304 null application/json 3.7581ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.boot.json | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHC:00000004","ConnectionId":"0HNHMBHLQPDHC","MachineName":"MSI","EnvironmentName":"Development","ThreadId":16,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:34.258] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.st3wwc8rqy.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.st3wwc8rqy.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHC:00000005","ConnectionId":"0HNHMBHLQPDHC","MachineName":"MSI","EnvironmentName":"Development","ThreadId":16,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:34.258] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.native.9ih887ebfz.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.native.9ih887ebfz.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHE:00000003","ConnectionId":"0HNHMBHLQPDHE","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:34.264] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.st3wwc8rqy.js.gz - 304 null text/javascript 5.7288ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.st3wwc8rqy.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHC:00000005","ConnectionId":"0HNHMBHLQPDHC","MachineName":"MSI","EnvironmentName":"Development","ThreadId":16,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:34.266] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.native.9ih887ebfz.js.gz - 304 null text/javascript 7.9765ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.native.9ih887ebfz.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHE:00000003","ConnectionId":"0HNHMBHLQPDHE","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:34.337] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.js.map - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.js.map | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHH:00000002","ConnectionId":"0HNHMBHLQPDHH","MachineName":"MSI","EnvironmentName":"Development","ThreadId":16,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:34.341] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.js.map.gz - 200 87809 text/plain 4.7521ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.js.map | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHH:00000002","ConnectionId":"0HNHMBHLQPDHH","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:35.986] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor-hotreload - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor-hotreload | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHE:00000004","ConnectionId":"0HNHMBHLQPDHE","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:35.990] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor-hotreload - 204 null null 4.2499ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor-hotreload | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHE:00000004","ConnectionId":"0HNHMBHLQPDHE","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:40.771] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor.webassembly.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.webassembly.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHI:00000001","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":14,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:40.780] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor.webassembly.js.gz - 304 null text/javascript 8.6618ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.webassembly.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHI:00000001","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":14,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:40.783] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/aspnetcore-browser-refresh.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/aspnetcore-browser-refresh.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHI:00000002","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":14,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:40.787] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/aspnetcore-browser-refresh.js - 200 16497 application/javascript; charset=utf-8 3.8182ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/aspnetcore-browser-refresh.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHI:00000002","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":14,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:40.791] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_vs/browserLink - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_vs/browserLink | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHI:00000003","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":14,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:40.804] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHJ:00000001","ConnectionId":"0HNHMBHLQPDHJ","MachineName":"MSI","EnvironmentName":"Development","ThreadId":14,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:40.809] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js.gz - 304 null text/javascript 5.0812ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHJ:00000001","ConnectionId":"0HNHMBHLQPDHJ","MachineName":"MSI","EnvironmentName":"Development","ThreadId":14,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:40.816] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 25.0698ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_vs/browserLink | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHI:00000003","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":9,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:40.842] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor.boot.json - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.boot.json | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHI:00000004","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":9,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:40.846] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor.boot.json.gz - 304 null application/json 3.6623ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.boot.json | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHI:00000004","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":9,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:40.872] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.st3wwc8rqy.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.st3wwc8rqy.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHI:00000005","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:40.873] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.native.9ih887ebfz.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.native.9ih887ebfz.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHJ:00000002","ConnectionId":"0HNHMBHLQPDHJ","MachineName":"MSI","EnvironmentName":"Development","ThreadId":9,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:40.882] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.st3wwc8rqy.js.gz - 304 null text/javascript 10.0813ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.st3wwc8rqy.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHI:00000005","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:40.893] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.native.9ih887ebfz.js.gz - 304 null text/javascript 20.6286ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.native.9ih887ebfz.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHJ:00000002","ConnectionId":"0HNHMBHLQPDHJ","MachineName":"MSI","EnvironmentName":"Development","ThreadId":9,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:42.356] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor-hotreload - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor-hotreload | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHJ:00000003","ConnectionId":"0HNHMBHLQPDHJ","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:19:42.359] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor-hotreload - 204 null null 3.3502ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor-hotreload | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHJ:00000003","ConnectionId":"0HNHMBHLQPDHJ","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.432] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_content/Components/Components.yb4wommtp0.bundle.scp.css?__browserLink_refresh=f84e36136fa84429976239bb0f2dfa35 - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/Components/Components.yb4wommtp0.bundle.scp.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHJ:00000004","ConnectionId":"0HNHMBHLQPDHJ","MachineName":"MSI","EnvironmentName":"Development","ThreadId":21,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.432] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/clear-browser-cache - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/clear-browser-cache | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHI:00000006","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":22,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.443] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/clear-browser-cache - 200 0 null 41.5372ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/clear-browser-cache | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHI:00000006","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":22,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.454] [INF] HTTP GET /_content/Components/Components.yb4wommtp0.bundle.scp.css → 200 in 13.3901ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: 013617bd-e418-493c-8746-1609c7ca7166
+    Request: GET /_content/Components/Components.yb4wommtp0.bundle.scp.css | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"?__browserLink_refresh=f84e36136fa84429976239bb0f2dfa35","ResponseContentType":"text/css","RequestId":"0HNHMBHLQPDHJ:00000004","ConnectionId":"0HNHMBHLQPDHJ","MachineName":"MSI","EnvironmentName":"Development","ThreadId":23,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.459] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_content/Components/Components.yb4wommtp0.bundle.scp.css?__browserLink_refresh=f84e36136fa84429976239bb0f2dfa35 - 200 4000 text/css 57.3479ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/Components/Components.yb4wommtp0.bundle.scp.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHJ:00000004","ConnectionId":"0HNHMBHLQPDHJ","MachineName":"MSI","EnvironmentName":"Development","ThreadId":23,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.501] [INF] Request starting HTTP/1.1 GET http://localhost:5255/lib/bootstrap/dist/css/bootstrap.min.css?nonce=1765200214499 - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /lib/bootstrap/dist/css/bootstrap.min.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHI:00000007","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":21,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.501] [INF] Request starting HTTP/1.1 GET http://localhost:5255/css/app.css?nonce=1765200214500 - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /css/app.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHJ:00000005","ConnectionId":"0HNHMBHLQPDHJ","MachineName":"MSI","EnvironmentName":"Development","ThreadId":22,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.573] [INF] HTTP GET /lib/bootstrap/dist/css/bootstrap.min.css → 200 in 68.6238ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: c00bb7e5-c23c-4ef8-9bca-527a46ef1a54
+    Request: GET /lib/bootstrap/dist/css/bootstrap.min.css | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"?nonce=1765200214499","ResponseContentType":"text/css","RequestId":"0HNHMBHLQPDHI:00000007","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":25,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.636] [INF] Request finished HTTP/1.1 GET http://localhost:5255/css/app.css?nonce=1765200214500 - 200 4151 text/css 134.6502ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /css/app.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHJ:00000005","ConnectionId":"0HNHMBHLQPDHJ","MachineName":"MSI","EnvironmentName":"Development","ThreadId":24,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.636] [INF] Request finished HTTP/1.1 GET http://localhost:5255/lib/bootstrap/dist/css/bootstrap.min.css?nonce=1765200214499 - 200 232803 text/css 135.6587ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /lib/bootstrap/dist/css/bootstrap.min.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHI:00000007","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":25,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.641] [INF] Request starting HTTP/1.1 GET http://localhost:5255/favicon.png?nonce=1765200214500 - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /favicon.png | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHJ:00000006","ConnectionId":"0HNHMBHLQPDHJ","MachineName":"MSI","EnvironmentName":"Development","ThreadId":24,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.644] [INF] Request starting HTTP/1.1 GET http://localhost:5255/Client.styles.css?nonce=1765200214500 - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /Client.styles.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHI:00000008","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":25,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.647] [INF] HTTP GET /favicon.png → 200 in 0.5518ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: 472ba0f7-e801-4baf-b024-8b79189b2803
+    Request: GET /favicon.png | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"?nonce=1765200214500","ResponseContentType":"image/png","RequestId":"0HNHMBHLQPDHJ:00000006","ConnectionId":"0HNHMBHLQPDHJ","MachineName":"MSI","EnvironmentName":"Development","ThreadId":22,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.649] [INF] HTTP GET /Client.styles.css → 200 in 0.6340ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: c5a9e9a1-4c65-461c-b996-c328f2cc25d7
+    Request: GET /Client.styles.css | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"?nonce=1765200214500","ResponseContentType":"text/css","RequestId":"0HNHMBHLQPDHI:00000008","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":26,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.650] [INF] Request finished HTTP/1.1 GET http://localhost:5255/favicon.png?nonce=1765200214500 - 200 1148 image/png 9.2907ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /favicon.png | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHJ:00000006","ConnectionId":"0HNHMBHLQPDHJ","MachineName":"MSI","EnvironmentName":"Development","ThreadId":22,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.652] [INF] Request finished HTTP/1.1 GET http://localhost:5255/Client.styles.css?nonce=1765200214500 - 200 4724 text/css 8.6953ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /Client.styles.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHI:00000008","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":26,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.659] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_content/Components/Components.yb4wommtp0.bundle.scp.css - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/Components/Components.yb4wommtp0.bundle.scp.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBHLQPDHI:00000009","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":26,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.663] [INF] HTTP GET /_content/Components/Components.yb4wommtp0.bundle.scp.css → 200 in 0.5310ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: fd55de79-7646-4d44-bdf8-f946e81bef73
+    Request: GET /_content/Components/Components.yb4wommtp0.bundle.scp.css | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"text/css","RequestId":"0HNHMBHLQPDHI:00000009","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":22,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:23:34.666] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_content/Components/Components.yb4wommtp0.bundle.scp.css - 200 4000 text/css 7.1145ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/Components/Components.yb4wommtp0.bundle.scp.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBHLQPDHI:00000009","ConnectionId":"0HNHMBHLQPDHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":22,"ProcessId":19400,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:55.306] [INF] Application started successfully on Development
+    Source:  | CorrelationId: 
+    Request:   | IP:  | UserAgent: 
+    Properties: {"MachineName":"MSI","EnvironmentName":"Development","ThreadId":2,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:56.743] [INF] Request starting HTTP/1.1 GET http://localhost/_framework/debug/ws-proxy?browser=ws%3A%2F%2F127.0.0.1%3A57012%2Fdevtools%2Fbrowser%2Fdb3af54b-70a4-4eb2-8a85-64d7013ccb40 - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/debug/ws-proxy | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDR:00000001","ConnectionId":"0HNHMBMUA6TDR","MachineName":"MSI","EnvironmentName":"Development","ThreadId":9,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:57.393] [INF] Request finished HTTP/1.1 GET http://localhost/_framework/debug/ws-proxy?browser=ws%3A%2F%2F127.0.0.1%3A57012%2Fdevtools%2Fbrowser%2Fdb3af54b-70a4-4eb2-8a85-64d7013ccb40 - 302 0 null 673.7998ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/debug/ws-proxy | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDR:00000001","ConnectionId":"0HNHMBMUA6TDR","MachineName":"MSI","EnvironmentName":"Development","ThreadId":8,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.011] [INF] Request starting HTTP/1.1 GET http://localhost:5255/ - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  / | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDS:00000001","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.113] [WRN] Failed to determine the https port for redirect.
+    Source: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware | CorrelationId: 
+    Request:  / | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"RequestId":"0HNHMBMUA6TDS:00000001","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":14,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.182] [INF] HTTP GET /index.html → 200 in 60.3868ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: ef722213-56b3-485c-aaee-694dee7fcee6
+    Request: GET /index.html | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"text/html","RequestId":"0HNHMBMUA6TDS:00000001","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":8,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.190] [INF] Request finished HTTP/1.1 GET http://localhost:5255/index.html - 200 null text/html 178.7983ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  / | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDS:00000001","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":8,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.237] [INF] Request starting HTTP/1.1 GET http://localhost:5255/css/app.css - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /css/app.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDT:00000001","ConnectionId":"0HNHMBMUA6TDT","MachineName":"MSI","EnvironmentName":"Development","ThreadId":14,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.271] [INF] Request starting HTTP/1.1 GET http://localhost:5255/lib/bootstrap/dist/css/bootstrap.min.css - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /lib/bootstrap/dist/css/bootstrap.min.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDS:00000002","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.271] [INF] Request starting HTTP/1.1 GET http://localhost:5255/Client.styles.css - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /Client.styles.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDU:00000001","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":17,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.388] [INF] HTTP GET /Client.styles.css → 200 in 103.3837ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: a5dad723-4dec-42f9-8a10-3330b884bbdb
+    Request: GET /Client.styles.css | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"text/css","RequestId":"0HNHMBMUA6TDU:00000001","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.388] [INF] Request finished HTTP/1.1 GET http://localhost:5255/css/app.css - 200 4151 text/css 151.2005ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /css/app.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDT:00000001","ConnectionId":"0HNHMBMUA6TDT","MachineName":"MSI","EnvironmentName":"Development","ThreadId":8,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.404] [INF] HTTP GET /lib/bootstrap/dist/css/bootstrap.min.css → 200 in 126.5599ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: 2d3e517e-5c15-4ee3-9b83-ec8b4d2cc4e1
+    Request: GET /lib/bootstrap/dist/css/bootstrap.min.css | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"text/css","RequestId":"0HNHMBMUA6TDS:00000002","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.426] [INF] Request finished HTTP/1.1 GET http://localhost:5255/Client.styles.css - 200 4724 text/css 154.2056ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /Client.styles.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDU:00000001","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.429] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor.webassembly.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.webassembly.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDT:00000002","ConnectionId":"0HNHMBMUA6TDT","MachineName":"MSI","EnvironmentName":"Development","ThreadId":8,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.431] [INF] Request finished HTTP/1.1 GET http://localhost:5255/lib/bootstrap/dist/css/bootstrap.min.css - 200 232803 text/css 159.5351ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /lib/bootstrap/dist/css/bootstrap.min.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDS:00000002","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.434] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/aspnetcore-browser-refresh.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/aspnetcore-browser-refresh.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDU:00000002","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.439] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_content/Components/Components.9377wn2l25.bundle.scp.css - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/Components/Components.9377wn2l25.bundle.scp.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDS:00000003","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.446] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/aspnetcore-browser-refresh.js - 200 16497 application/javascript; charset=utf-8 12.7725ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/aspnetcore-browser-refresh.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDU:00000002","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.452] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor.webassembly.js.gz - 200 18006 text/javascript 23.5788ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.webassembly.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDT:00000002","ConnectionId":"0HNHMBMUA6TDT","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.452] [INF] HTTP GET /_content/Components/Components.9377wn2l25.bundle.scp.css → 200 in 0.6422ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: b78de131-17ac-4cdc-b790-9af2b79aa18c
+    Request: GET /_content/Components/Components.9377wn2l25.bundle.scp.css | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"text/css","RequestId":"0HNHMBMUA6TDS:00000003","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":8,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.463] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_vs/browserLink - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_vs/browserLink | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDU:00000003","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.469] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_content/Components/Components.9377wn2l25.bundle.scp.css - 200 4000 text/css 29.8905ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/Components/Components.9377wn2l25.bundle.scp.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDS:00000003","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":8,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.481] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDS:00000004","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":8,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.489] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js.gz - 200 12662 text/javascript 8.1528ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDS:00000004","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.516] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.8323ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_vs/browserLink | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDU:00000003","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.840] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js.map - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js.map | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TE2:00000001","ConnectionId":"0HNHMBMUA6TE2","MachineName":"MSI","EnvironmentName":"Development","ThreadId":8,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.852] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js.map.gz - 200 21068 text/plain 12.4261ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js.map | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TE2:00000001","ConnectionId":"0HNHMBMUA6TE2","MachineName":"MSI","EnvironmentName":"Development","ThreadId":17,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.866] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor.boot.json - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.boot.json | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDU:00000004","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":17,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.871] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor.boot.json.gz - 200 12572 application/json 5.4402ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.boot.json | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDU:00000004","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.888] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.st3wwc8rqy.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.st3wwc8rqy.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDU:00000005","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":17,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.888] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.native.9ih887ebfz.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.native.9ih887ebfz.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDS:00000005","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.894] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.st3wwc8rqy.js.gz - 200 55609 text/javascript 5.8608ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.st3wwc8rqy.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDU:00000005","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":17,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.897] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.native.9ih887ebfz.js.gz - 200 34747 text/javascript 9.5578ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.native.9ih887ebfz.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDS:00000005","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.933] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/Client.toa8qp4wro.pdb - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Client.toa8qp4wro.pdb | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDU:00000006","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.933] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/Components.dfwqnu1nlw.pdb - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Components.dfwqnu1nlw.pdb | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDS:00000006","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":17,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.953] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/Client.toa8qp4wro.pdb.gz - 200 44470 application/octet-stream 19.9505ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Client.toa8qp4wro.pdb | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDU:00000006","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":14,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.959] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/Components.dfwqnu1nlw.pdb.gz - 200 27029 application/octet-stream 26.1201ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Components.dfwqnu1nlw.pdb | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDS:00000006","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.971] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.js.map - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.js.map | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TE2:00000002","ConnectionId":"0HNHMBMUA6TE2","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:58.978] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.js.map.gz - 200 87809 text/plain 7.1019ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.js.map | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TE2:00000002","ConnectionId":"0HNHMBMUA6TE2","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:59.027] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/Components.52i0llg9wx.wasm - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Components.52i0llg9wx.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDS:00000007","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":17,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:59.028] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/Client.lfhtdliqkt.wasm - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Client.lfhtdliqkt.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDU:00000007","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:59.033] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/Components.52i0llg9wx.wasm.gz - 200 23693 application/wasm 5.988ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Components.52i0llg9wx.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDS:00000007","ConnectionId":"0HNHMBMUA6TDS","MachineName":"MSI","EnvironmentName":"Development","ThreadId":17,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:28:59.037] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/Client.lfhtdliqkt.wasm.gz - 200 35943 application/wasm 8.9168ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Client.lfhtdliqkt.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDU:00000007","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":14,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:00.667] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor-hotreload - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor-hotreload | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TDU:00000008","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":19,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:00.672] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor-hotreload - 204 null null 5.1391ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor-hotreload | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TDU:00000008","ConnectionId":"0HNHMBMUA6TDU","MachineName":"MSI","EnvironmentName":"Development","ThreadId":19,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:06.880] [INF] Request starting HTTP/1.1 GET http://localhost:5255/checklist-demo - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /checklist-demo | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TE3:00000001","ConnectionId":"0HNHMBMUA6TE3","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:06.892] [INF] HTTP GET /index.html → 200 in 2.6104ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: f572073e-81e0-49d2-ac5a-2a94e398be10
+    Request: GET /index.html | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"text/html","RequestId":"0HNHMBMUA6TE3:00000001","ConnectionId":"0HNHMBMUA6TE3","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:06.895] [INF] Request finished HTTP/1.1 GET http://localhost:5255/index.html - 200 null text/html 14.2836ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /checklist-demo | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TE3:00000001","ConnectionId":"0HNHMBMUA6TE3","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:06.903] [INF] Request starting HTTP/1.1 GET http://localhost:5255/Client.styles.css - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /Client.styles.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TE4:00000001","ConnectionId":"0HNHMBMUA6TE4","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:06.906] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/aspnetcore-browser-refresh.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/aspnetcore-browser-refresh.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TE3:00000002","ConnectionId":"0HNHMBMUA6TE3","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:06.929] [INF] HTTP GET /Client.styles.css → 304 in 1.4478ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: 21c82b93-6c75-489e-9e43-afc9f73382f8
+    Request: GET /Client.styles.css | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"text/css","RequestId":"0HNHMBMUA6TE4:00000001","ConnectionId":"0HNHMBMUA6TE4","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:06.930] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/aspnetcore-browser-refresh.js - 200 16497 application/javascript; charset=utf-8 24.2328ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/aspnetcore-browser-refresh.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TE3:00000002","ConnectionId":"0HNHMBMUA6TE3","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:06.934] [INF] Request finished HTTP/1.1 GET http://localhost:5255/Client.styles.css - 304 null text/css 30.9667ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /Client.styles.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TE4:00000001","ConnectionId":"0HNHMBMUA6TE4","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:06.937] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor.webassembly.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.webassembly.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TE3:00000003","ConnectionId":"0HNHMBMUA6TE3","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:06.944] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_vs/browserLink - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_vs/browserLink | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TE4:00000002","ConnectionId":"0HNHMBMUA6TE4","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:06.957] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor.webassembly.js.gz - 304 null text/javascript 19.6711ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.webassembly.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TE3:00000003","ConnectionId":"0HNHMBMUA6TE3","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:06.966] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 22.3984ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_vs/browserLink | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TE4:00000002","ConnectionId":"0HNHMBMUA6TE4","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:06.968] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TE3:00000004","ConnectionId":"0HNHMBMUA6TE3","MachineName":"MSI","EnvironmentName":"Development","ThreadId":19,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:06.980] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js.gz - 304 null text/javascript 11.6818ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TE3:00000004","ConnectionId":"0HNHMBMUA6TE3","MachineName":"MSI","EnvironmentName":"Development","ThreadId":19,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:07.016] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor.boot.json - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.boot.json | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TE3:00000005","ConnectionId":"0HNHMBMUA6TE3","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:07.021] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor.boot.json.gz - 304 null application/json 5.1193ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.boot.json | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TE3:00000005","ConnectionId":"0HNHMBMUA6TE3","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:07.048] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.st3wwc8rqy.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.st3wwc8rqy.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TE3:00000006","ConnectionId":"0HNHMBMUA6TE3","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:07.048] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.native.9ih887ebfz.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.native.9ih887ebfz.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TE4:00000003","ConnectionId":"0HNHMBMUA6TE4","MachineName":"MSI","EnvironmentName":"Development","ThreadId":19,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:07.161] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.native.9ih887ebfz.js.gz - 304 null text/javascript 113.0502ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.native.9ih887ebfz.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TE4:00000003","ConnectionId":"0HNHMBMUA6TE4","MachineName":"MSI","EnvironmentName":"Development","ThreadId":19,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:07.146] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.st3wwc8rqy.js.gz - 304 null text/javascript 97.3377ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.st3wwc8rqy.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TE3:00000006","ConnectionId":"0HNHMBMUA6TE3","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:08.677] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor-hotreload - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor-hotreload | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMBMUA6TE4:00000004","ConnectionId":"0HNHMBMUA6TE4","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 20:29:08.680] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor-hotreload - 204 null null 2.8561ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor-hotreload | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMBMUA6TE4:00000004","ConnectionId":"0HNHMBMUA6TE4","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":11792,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:17.864] [INF] Application started successfully on Development
+    Source:  | CorrelationId: 
+    Request:   | IP:  | UserAgent: 
+    Properties: {"MachineName":"MSI","EnvironmentName":"Development","ThreadId":2,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:21.963] [INF] Request starting HTTP/1.1 GET http://localhost/_framework/debug/ws-proxy?browser=ws%3A%2F%2F127.0.0.1%3A55260%2Fdevtools%2Fbrowser%2F682f7b84-961c-48f5-9433-f45b72d8196a - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/debug/ws-proxy | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHE:00000001","ConnectionId":"0HNHMCCCHIHHE","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:22.778] [INF] Request finished HTTP/1.1 GET http://localhost/_framework/debug/ws-proxy?browser=ws%3A%2F%2F127.0.0.1%3A55260%2Fdevtools%2Fbrowser%2F682f7b84-961c-48f5-9433-f45b72d8196a - 302 0 null 835.5294ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/debug/ws-proxy | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHE:00000001","ConnectionId":"0HNHMCCCHIHHE","MachineName":"MSI","EnvironmentName":"Development","ThreadId":9,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:23.428] [INF] Request starting HTTP/1.1 GET http://localhost:5255/ - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  / | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHF:00000001","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:23.578] [WRN] Failed to determine the https port for redirect.
+    Source: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware | CorrelationId: 
+    Request:  / | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"RequestId":"0HNHMCCCHIHHF:00000001","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:23.636] [INF] HTTP GET /index.html → 200 in 47.9310ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: 0d43e585-6570-4ae9-8dfd-722dc7670410
+    Request: GET /index.html | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"text/html","RequestId":"0HNHMCCCHIHHF:00000001","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:23.643] [INF] Request finished HTTP/1.1 GET http://localhost:5255/index.html - 200 null text/html 216.1439ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  / | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHF:00000001","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.629] [INF] Request starting HTTP/1.1 GET http://localhost:5255/Client.styles.css - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /Client.styles.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHG:00000001","ConnectionId":"0HNHMCCCHIHHG","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.630] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_content/C1.Blazor.Core/styles/c1.css - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/C1.Blazor.Core/styles/c1.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHF:00000002","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.693] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor.webassembly.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.webassembly.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHH:00000001","ConnectionId":"0HNHMCCCHIHHH","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.790] [WRN] HTTP GET /_content/C1.Blazor.Core/styles/c1.css → 404 in 77.7381ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: a2e338b6-413a-4a00-a26c-9de488e39c0d
+    Request: GET /_content/C1.Blazor.Core/styles/c1.css | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"","RequestId":"0HNHMCCCHIHHF:00000002","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.790] [INF] HTTP GET /Client.styles.css → 200 in 90.8362ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: 06683104-0e13-4c5d-80f5-7dcee2ebd878
+    Request: GET /Client.styles.css | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"text/css","RequestId":"0HNHMCCCHIHHG:00000001","ConnectionId":"0HNHMCCCHIHHG","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.793] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_content/C1.Blazor.Core/styles/c1.css - 404 0 null 163.16ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/C1.Blazor.Core/styles/c1.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHF:00000002","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.795] [INF] Request finished HTTP/1.1 GET http://localhost:5255/Client.styles.css - 200 4724 text/css 166.3454ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /Client.styles.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHG:00000001","ConnectionId":"0HNHMCCCHIHHG","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.797] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor.webassembly.js.gz - 304 null text/javascript 135.1527ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.webassembly.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHH:00000001","ConnectionId":"0HNHMCCCHIHHH","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.801] [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5255/_content/C1.Blazor.Core/styles/c1.css, Response status code: 404
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/C1.Blazor.Core/styles/c1.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":16},"RequestId":"0HNHMCCCHIHHF:00000002","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.802] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/aspnetcore-browser-refresh.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/aspnetcore-browser-refresh.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHG:00000002","ConnectionId":"0HNHMCCCHIHHG","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.805] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_vs/browserLink - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_vs/browserLink | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHH:00000002","ConnectionId":"0HNHMCCCHIHHH","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.807] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_content/Components/Components.yb4wommtp0.bundle.scp.css - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/Components/Components.yb4wommtp0.bundle.scp.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHF:00000003","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.812] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/aspnetcore-browser-refresh.js - 200 16497 application/javascript; charset=utf-8 9.718ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/aspnetcore-browser-refresh.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHG:00000002","ConnectionId":"0HNHMCCCHIHHG","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.819] [INF] HTTP GET /_content/Components/Components.yb4wommtp0.bundle.scp.css → 200 in 0.8228ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: 96e50e78-a928-4898-9561-c3fcaefb0070
+    Request: GET /_content/Components/Components.yb4wommtp0.bundle.scp.css | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"text/css","RequestId":"0HNHMCCCHIHHF:00000003","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.837] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_content/Components/Components.yb4wommtp0.bundle.scp.css - 200 3151 text/css 29.2212ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/Components/Components.yb4wommtp0.bundle.scp.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHF:00000003","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.844] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHF:00000004","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.854] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js.gz - 304 null text/javascript 10.0446ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHF:00000004","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:25.875] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 69.1451ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_vs/browserLink | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHH:00000002","ConnectionId":"0HNHMCCCHIHHH","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.227] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js.map - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js.map | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHL:00000001","ConnectionId":"0HNHMCCCHIHHL","MachineName":"MSI","EnvironmentName":"Development","ThreadId":19,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.234] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js.map.gz - 200 21068 text/plain 7.27ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js.map | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHL:00000001","ConnectionId":"0HNHMCCCHIHHL","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.245] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor.boot.json - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.boot.json | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHH:00000003","ConnectionId":"0HNHMCCCHIHHH","MachineName":"MSI","EnvironmentName":"Development","ThreadId":19,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.252] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor.boot.json.gz - 200 13054 application/json 6.7823ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.boot.json | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHH:00000003","ConnectionId":"0HNHMCCCHIHHH","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.272] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.native.9ih887ebfz.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.native.9ih887ebfz.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHF:00000005","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":19,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.272] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.st3wwc8rqy.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.st3wwc8rqy.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHH:00000004","ConnectionId":"0HNHMCCCHIHHH","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.276] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.native.9ih887ebfz.js.gz - 304 null text/javascript 3.8699ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.native.9ih887ebfz.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHF:00000005","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":19,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.278] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.st3wwc8rqy.js.gz - 304 null text/javascript 6.4142ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.st3wwc8rqy.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHH:00000004","ConnectionId":"0HNHMCCCHIHHH","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.322] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/Components.xq3goflych.pdb - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Components.xq3goflych.pdb | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHH:00000005","ConnectionId":"0HNHMCCCHIHHH","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.322] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/Client.3w7iqm4mas.pdb - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Client.3w7iqm4mas.pdb | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHF:00000006","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.322] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/C1.Blazor.Chart.xu0pi2q7xz.wasm - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/C1.Blazor.Chart.xu0pi2q7xz.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHG:00000003","ConnectionId":"0HNHMCCCHIHHG","MachineName":"MSI","EnvironmentName":"Development","ThreadId":19,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.323] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/C1.Blazor.ListView.qyhh39zxrh.wasm - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/C1.Blazor.ListView.qyhh39zxrh.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHK:00000001","ConnectionId":"0HNHMCCCHIHHK","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.324] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/C1.Blazor.Core.o4ucav3t5j.wasm - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/C1.Blazor.Core.o4ucav3t5j.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHI:00000001","ConnectionId":"0HNHMCCCHIHHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.324] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/C1.Blazor.Input.pycm6gkysc.wasm - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/C1.Blazor.Input.pycm6gkysc.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHJ:00000001","ConnectionId":"0HNHMCCCHIHHJ","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.341] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/Components.xq3goflych.pdb.gz - 200 26797 application/octet-stream 18.7197ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Components.xq3goflych.pdb | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHH:00000005","ConnectionId":"0HNHMCCCHIHHH","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.350] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/Client.3w7iqm4mas.pdb.gz - 200 51857 application/octet-stream 27.6015ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Client.3w7iqm4mas.pdb | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHF:00000006","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.371] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/C1.Blazor.ListView.qyhh39zxrh.wasm.gz - 200 15509 application/wasm 47.8195ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/C1.Blazor.ListView.qyhh39zxrh.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHK:00000001","ConnectionId":"0HNHMCCCHIHHK","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.375] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.js.map - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.js.map | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHL:00000002","ConnectionId":"0HNHMCCCHIHHL","MachineName":"MSI","EnvironmentName":"Development","ThreadId":19,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.379] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/C1.Blazor.Input.pycm6gkysc.wasm.gz - 200 81668 application/wasm 55.1916ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/C1.Blazor.Input.pycm6gkysc.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHJ:00000001","ConnectionId":"0HNHMCCCHIHHJ","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.379] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/C1.Blazor.Core.o4ucav3t5j.wasm.gz - 200 142081 application/wasm 55.4981ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/C1.Blazor.Core.o4ucav3t5j.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHI:00000001","ConnectionId":"0HNHMCCCHIHHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.383] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/C1.Blazor.Rendering.ih2ssmg0w5.wasm - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/C1.Blazor.Rendering.ih2ssmg0w5.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHH:00000006","ConnectionId":"0HNHMCCCHIHHH","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.386] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/C1.DataCollection.e22m2gssj6.wasm - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/C1.DataCollection.e22m2gssj6.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHF:00000007","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.390] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/Microsoft.Win32.SystemEvents.asbyu30enw.wasm - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Microsoft.Win32.SystemEvents.asbyu30enw.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHK:00000002","ConnectionId":"0HNHMCCCHIHHK","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.396] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/C1.Blazor.Chart.xu0pi2q7xz.wasm.gz - 200 199225 application/wasm 73.2ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/C1.Blazor.Chart.xu0pi2q7xz.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHG:00000003","ConnectionId":"0HNHMCCCHIHHG","MachineName":"MSI","EnvironmentName":"Development","ThreadId":19,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.398] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.js.map.gz - 200 87809 text/plain 23.1829ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.js.map | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHL:00000002","ConnectionId":"0HNHMCCCHIHHL","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.403] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/System.Drawing.Common.3y29mvytmn.wasm - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/System.Drawing.Common.3y29mvytmn.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHI:00000002","ConnectionId":"0HNHMCCCHIHHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":15,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.407] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/C1.Blazor.Rendering.ih2ssmg0w5.wasm.gz - 200 11352 application/wasm 24.3242ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/C1.Blazor.Rendering.ih2ssmg0w5.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHH:00000006","ConnectionId":"0HNHMCCCHIHHH","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.412] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/C1.DataCollection.e22m2gssj6.wasm.gz - 200 139668 application/wasm 25.5074ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/C1.DataCollection.e22m2gssj6.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHF:00000007","ConnectionId":"0HNHMCCCHIHHF","MachineName":"MSI","EnvironmentName":"Development","ThreadId":13,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.416] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/Microsoft.Win32.SystemEvents.asbyu30enw.wasm.gz - 200 6821 application/wasm 26.1602ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Microsoft.Win32.SystemEvents.asbyu30enw.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHK:00000002","ConnectionId":"0HNHMCCCHIHHK","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.428] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/System.Drawing.Common.3y29mvytmn.wasm.gz - 200 56710 application/wasm 25.0407ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/System.Drawing.Common.3y29mvytmn.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHI:00000002","ConnectionId":"0HNHMCCCHIHHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.467] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/Client.ip1094h4b7.wasm - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Client.ip1094h4b7.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHK:00000003","ConnectionId":"0HNHMCCCHIHHK","MachineName":"MSI","EnvironmentName":"Development","ThreadId":18,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.468] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/Components.ia38afv2aq.wasm - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Components.ia38afv2aq.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHI:00000003","ConnectionId":"0HNHMCCCHIHHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.474] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/Client.ip1094h4b7.wasm.gz - 200 41071 application/wasm 7.0638ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Client.ip1094h4b7.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHK:00000003","ConnectionId":"0HNHMCCCHIHHK","MachineName":"MSI","EnvironmentName":"Development","ThreadId":20,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:26.495] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/Components.ia38afv2aq.wasm.gz - 200 23406 application/wasm 26.8678ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/Components.ia38afv2aq.wasm | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHI:00000003","ConnectionId":"0HNHMCCCHIHHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:28.449] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor-hotreload - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor-hotreload | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHI:00000004","ConnectionId":"0HNHMCCCHIHHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":19,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:28.454] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor-hotreload - 204 null null 5.2041ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor-hotreload | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHI:00000004","ConnectionId":"0HNHMCCCHIHHI","MachineName":"MSI","EnvironmentName":"Development","ThreadId":19,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.229] [INF] Request starting HTTP/1.1 GET http://localhost:5255//c1-input-demo - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  //c1-input-demo | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHM:00000001","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.235] [INF] HTTP GET /index.html → 200 in 0.6906ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: 66e6f225-0070-4803-9f67-4611dc40bbd2
+    Request: GET /index.html | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"text/html","RequestId":"0HNHMCCCHIHHM:00000001","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":24,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.237] [INF] Request finished HTTP/1.1 GET http://localhost:5255/index.html - 200 null text/html 10.2225ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  //c1-input-demo | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHM:00000001","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":24,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.247] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/aspnetcore-browser-refresh.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/aspnetcore-browser-refresh.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHM:00000002","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.247] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_content/C1.Blazor.Core/styles/c1.css - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/C1.Blazor.Core/styles/c1.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHN:00000001","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":12,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.263] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/aspnetcore-browser-refresh.js - 200 16497 application/javascript; charset=utf-8 16.7919ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/aspnetcore-browser-refresh.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHM:00000002","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.269] [WRN] HTTP GET /_content/C1.Blazor.Core/styles/c1.css → 404 in 0.2555ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: 0295bee0-3680-414f-bf1c-205dc7acd562
+    Request: GET /_content/C1.Blazor.Core/styles/c1.css | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"","RequestId":"0HNHMCCCHIHHN:00000001","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":12,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.272] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor.webassembly.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.webassembly.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHM:00000003","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.275] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_content/C1.Blazor.Core/styles/c1.css - 404 0 null 28.7758ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/C1.Blazor.Core/styles/c1.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHN:00000001","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":12,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.279] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor.webassembly.js.gz - 304 null text/javascript 6.6385ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.webassembly.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHM:00000003","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.282] [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5255/_content/C1.Blazor.Core/styles/c1.css, Response status code: 404
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/C1.Blazor.Core/styles/c1.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":16},"RequestId":"0HNHMCCCHIHHN:00000001","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":12,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.288] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHM:00000004","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.290] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_vs/browserLink - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_vs/browserLink | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHN:00000002","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":12,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.294] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js.gz - 304 null text/javascript 6.4049ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHM:00000004","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.314] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 23.2635ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_vs/browserLink | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHN:00000002","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":25,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.339] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor.boot.json - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.boot.json | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHN:00000003","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":24,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.346] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor.boot.json.gz - 304 null application/json 6.3162ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.boot.json | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHN:00000003","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":24,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.370] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.st3wwc8rqy.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.st3wwc8rqy.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHN:00000004","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":24,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.371] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.native.9ih887ebfz.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.native.9ih887ebfz.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHM:00000005","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":25,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.380] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.st3wwc8rqy.js.gz - 304 null text/javascript 9.6391ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.st3wwc8rqy.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHN:00000004","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":24,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:55.387] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.native.9ih887ebfz.js.gz - 304 null text/javascript 16.5622ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.native.9ih887ebfz.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHM:00000005","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":25,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:56.893] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor-hotreload - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor-hotreload | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHM:00000006","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":12,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:56.896] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor-hotreload - 204 null null 3.2738ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor-hotreload | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHM:00000006","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":12,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.798] [INF] Request starting HTTP/1.1 GET http://localhost:5255/c1-input-demo - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /c1-input-demo | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHM:00000007","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":12,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.803] [INF] HTTP GET /index.html → 200 in 0.5643ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: f017a157-cc22-4704-aa53-2e5e1b042f24
+    Request: GET /index.html | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"text/html","RequestId":"0HNHMCCCHIHHM:00000007","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":12,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.806] [INF] Request finished HTTP/1.1 GET http://localhost:5255/index.html - 200 null text/html 8.4936ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /c1-input-demo | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHM:00000007","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":12,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.818] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_content/C1.Blazor.Core/styles/c1.css - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/C1.Blazor.Core/styles/c1.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHN:00000005","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":26,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.819] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/aspnetcore-browser-refresh.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/aspnetcore-browser-refresh.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHM:00000008","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":12,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.819] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor.webassembly.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.webassembly.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHO:00000001","ConnectionId":"0HNHMCCCHIHHO","MachineName":"MSI","EnvironmentName":"Development","ThreadId":25,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.824] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_vs/browserLink - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_vs/browserLink | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHP:00000001","ConnectionId":"0HNHMCCCHIHHP","MachineName":"MSI","EnvironmentName":"Development","ThreadId":5,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.829] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/aspnetcore-browser-refresh.js - 200 16497 application/javascript; charset=utf-8 10.6303ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/aspnetcore-browser-refresh.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHM:00000008","ConnectionId":"0HNHMCCCHIHHM","MachineName":"MSI","EnvironmentName":"Development","ThreadId":12,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.841] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor.webassembly.js.gz - 304 null text/javascript 22.5331ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.webassembly.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHO:00000001","ConnectionId":"0HNHMCCCHIHHO","MachineName":"MSI","EnvironmentName":"Development","ThreadId":25,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.823] [WRN] HTTP GET /_content/C1.Blazor.Core/styles/c1.css → 404 in 0.1447ms
+    Source: Serilog.AspNetCore.RequestLoggingMiddleware | CorrelationId: d0f4bc2a-2ee2-4793-982c-c55967146a4f
+    Request: GET /_content/C1.Blazor.Core/styles/c1.css | IP: 127.0.0.1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
+    Properties: {"RequestHost":"localhost:5255","RequestScheme":"http","ContentType":"","QueryString":"","ResponseContentType":"","RequestId":"0HNHMCCCHIHHN:00000005","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":26,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.847] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 23.2622ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_vs/browserLink | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHP:00000001","ConnectionId":"0HNHMCCCHIHHP","MachineName":"MSI","EnvironmentName":"Development","ThreadId":24,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.855] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_content/C1.Blazor.Core/styles/c1.css - 404 0 null 37.0265ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/C1.Blazor.Core/styles/c1.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHN:00000005","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":26,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.866] [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5255/_content/C1.Blazor.Core/styles/c1.css, Response status code: 404
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_content/C1.Blazor.Core/styles/c1.css | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":16},"RequestId":"0HNHMCCCHIHHN:00000005","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":26,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.869] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHN:00000006","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":26,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.874] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.js.gz - 304 null text/javascript 4.5504ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHN:00000006","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":26,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.914] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor.boot.json - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.boot.json | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHN:00000007","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":26,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.918] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor.boot.json.gz - 304 null application/json 3.8677ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor.boot.json | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHN:00000007","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":26,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.946] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.native.9ih887ebfz.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.native.9ih887ebfz.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHP:00000002","ConnectionId":"0HNHMCCCHIHHP","MachineName":"MSI","EnvironmentName":"Development","ThreadId":25,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.947] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.st3wwc8rqy.js - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.st3wwc8rqy.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHN:00000008","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":26,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.955] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.native.9ih887ebfz.js.gz - 304 null text/javascript 8.3584ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.native.9ih887ebfz.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHP:00000002","ConnectionId":"0HNHMCCCHIHHP","MachineName":"MSI","EnvironmentName":"Development","ThreadId":25,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:07:58.967] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/dotnet.runtime.st3wwc8rqy.js.gz - 304 null text/javascript 21.2225ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/dotnet.runtime.st3wwc8rqy.js | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHN:00000008","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":26,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:08:00.364] [INF] Request starting HTTP/1.1 GET http://localhost:5255/_framework/blazor-hotreload - null null
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor-hotreload | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":1},"RequestId":"0HNHMCCCHIHHN:00000009","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":26,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
+[2025-12-08 21:08:00.367] [INF] Request finished HTTP/1.1 GET http://localhost:5255/_framework/blazor-hotreload - 204 null null 3.0499ms
+    Source: Microsoft.AspNetCore.Hosting.Diagnostics | CorrelationId: 
+    Request:  /_framework/blazor-hotreload | IP:  | UserAgent: 
+    Properties: {"EventId":{"Id":2},"RequestId":"0HNHMCCCHIHHN:00000009","ConnectionId":"0HNHMCCCHIHHN","MachineName":"MSI","EnvironmentName":"Development","ThreadId":26,"ProcessId":25700,"ApplicationName":"BlazorAppStruct"}
