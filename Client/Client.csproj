@@ -15,8 +15,13 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.9" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.9" PrivateAssets="all" />
     <!-- ComponentOne Blazor packages -->
-    <PackageReference Include="C1.Blazor.Core" Version="8.0.20242" />
-    <PackageReference Include="C1.Blazor.Grid" Version="8.0.20242" />
+	  <PackageReference Include="C1.Blazor.Calendar" Version="9.0.20251.1134" />
+	  <PackageReference Include="C1.Blazor.Core" Version="9.0.20251.1134" />
+	  <PackageReference Include="C1.Blazor.DataPager" Version="9.0.20251.1134" />
+	  <PackageReference Include="C1.Blazor.DateTimeEditors" Version="9.0.20251.1134" />
+	  <PackageReference Include="C1.Blazor.Grid" Version="9.0.20251.1134" />
+	  <PackageReference Include="C1.Blazor.Input" Version="9.0.20251.1134" />
+	  <PackageReference Include="C1.Blazor.Menu" Version="9.0.20251.1134" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="10.0.1" />
   </ItemGroup>
 

@@ -1,24 +1,32 @@
-@page "/c1-flexgrid-demo"
+ï»¿@page "/c1-flexgrid-demo"
+@inject IJSRuntime JS
+
 
 <PageTitle>ComponentOne FlexGrid Demo</PageTitle>
 
 <h3>FlexGrid - Basic</h3>
 <p class="text-muted">Simple grid with auto-generated columns and paging.</p>
 
-@* <C1FlexGrid ItemsSource="people" AutoGenerateColumns="true" IsReadOnly="false"
-            AlternatingRowBackground="@C1Color.FromArgb(0xFFF8F9FA)"
-            RowHeight="36" HeadersVisibility="C1GridHeadersVisibility.All">
-</C1FlexGrid> *@
+<C1Button Background="C1Color.Cyan" Padding="10" FontSize=20 Click="test"> Test</C1Button>
+<C1Button MouseOverBrush="C1Color.FromArgb(255, 100, 150, 255)"
+          PressedBrush="C1Color.FromArgb(255, 50, 100, 200)"
+          FocusBrush="C1Color.FromArgb(255, 200, 100, 50)"
+          Click="@test">
+    NÃºt TÃ¹y chá»‰nh
+</C1Button>
 
 @code {
     private record Person(int Id, string Name, string Email, int Age);
-
+    private void test()
+    {
+        JS.InvokeVoidAsync("alert", "Test button clicked");
+    }
     private List<Person> people = new()
     {
-        new(1, "Nguy?n Vãn A", "nva@example.com", 25),
+        new(1, "Nguy?n VÄƒn A", "nva@example.com", 25),
         new(2, "Tr?n Th? B", "ttb@example.com", 30),
-        new(3, "Lê Vãn C", "lvc@example.com", 28),
+        new(3, "LÃª VÄƒn C", "lvc@example.com", 28),
         new(4, "Ph?m Th? D", "ptd@example.com", 35),
-        new(5, "Hoàng Vãn E", "hve@example.com", 22)
+        new(5, "HoÃ ng VÄƒn E", "hve@example.com", 22)
     };
 }

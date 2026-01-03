@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+	      <PackageReference Include="C1.Blazor.Calendar" Version="9.0.20251.1134" />
+    <PackageReference Include="C1.Blazor.Core" Version="9.0.20251.1134" />
+    <PackageReference Include="C1.Blazor.DataPager" Version="9.0.20251.1134" />
+    <PackageReference Include="C1.Blazor.DateTimeEditors" Version="9.0.20251.1134" />
+    <PackageReference Include="C1.Blazor.Grid" Version="9.0.20251.1134" />
+    <PackageReference Include="C1.Blazor.Input" Version="9.0.20251.1134" />
+    <PackageReference Include="C1.Blazor.Menu" Version="9.0.20251.1134" />
+	  
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.10" />

@@ -1,4 +1,7 @@
 ﻿using Data;
+using Data.Dapper.Implementations;
+using Data.Dapper.Interfaces;
+using Data.Dapper.Infrastructure;
 using Services.Implements;
 using Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +10,7 @@ using Server.Middlewares;
 using Microsoft.AspNetCore.HttpOverrides;
 using Serilog;
 using Serilog.Events;
+using Shared.Entities.Dtos;
 
 // Configure Serilog early
 Log.Logger = new LoggerConfiguration()
@@ -47,12 +51,37 @@ try
         options.UseSqlServer(connStr);
     });
 
+    // Dapper Infrastructure - Enterprise Pattern
+    // Step 1: Factory tạo connections (Singleton - stateless)
+    builder.Services.AddSingleton<IDbConnectionFactory, SqlConnectionFactory>();
+    
+    // Step 2: UnitOfWork quản lý transaction (Scoped - per request)
+    // DI tự động inject IDbConnectionFactory vào UnitOfWork constructor
+    builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+    
+    // Step 3: Repository (Scoped - per request)
+    // DI tự động inject IUnitOfWork vào TodoRepository constructor
+    builder.Services.AddScoped<ITodoRepository, TodoRepository>();
+
+    // Step 4: Configure Dapper GLOBAL Column Mapping
+    // ✅ Cách 1: GLOBAL mapping - Tự động áp dụng cho TẤT CẢ DTOs
+    DapperMapperExtensions.RegisterGlobalSnakeCaseMapper();
+    
+    // ❌ Cách 2: Per-type mapping - Phải đăng ký từng DTO (KHÔNG DÙNG nếu đã dùng global)
+    // DapperMapperExtensions.RegisterSnakeCaseMapper<TodoItemDto>();
+    // DapperMapperExtensions.RegisterSnakeCaseMapper<UserDto>();
+
     // App services
     builder.Services.AddScoped<ITodoService, TodoService>();
     builder.Services.AddScoped<ITodoSpService, TodoSpService>();
     builder.Services.AddScoped<ITodoEfService, TodoEfService>();
     builder.Services.AddScoped<ITodoExtSpService, TodoExtSpService>();
     builder.Services.AddScoped<ITodoManualConnDemoService, TodoManualConnDemoService>();
+    builder.Services.AddScoped<ITodoDapperService, TodoDapperService>();
+    
+    // Dapper services
+    builder.Services.AddScoped<ITodoTransactionService, TodoTransactionService>();
+    builder.Services.AddScoped<ITodoQueryService, TodoQueryService>();
 
     // SP executors
     builder.Services.AddScoped<IStoredProcedureExecutor, StoredProcedureExecutor>(); // EF FromSql executor

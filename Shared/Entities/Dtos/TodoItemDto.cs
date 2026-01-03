@@ -12,7 +12,7 @@ namespace Shared.Entities.Dtos
         public int Id { get; init; }
         public string Title { get; init; } = string.Empty;
         public bool IsDone { get; init; }
-        public DateTime CreatedAt { get; init; }
+        public DateTime? CreatedAt { get; init; }
 
         public TodoItemDto() { }
         public TodoItemDto(int id, string title, bool isDone, DateTime createdAt)
