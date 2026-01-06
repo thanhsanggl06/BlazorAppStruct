@@ -1,0 +1,335 @@
+﻿@page "/fixed-length-demo"
+@using Shared.FixedLength.Models
+@using Shared.FixedLength.Services
+@using System.Text
+@inject IJSRuntime JS
+
+<PageTitle>Fixed Length File Demo</PageTitle>
+
+<div class="container-fluid py-4">
+    <h3>?? Fixed Length File Demo</h3>
+    <p class="text-muted">Demo x? l? file fixed length v?i attribute-based mapping</p>
+
+    <div class="row">
+        <!-- Employee Records Demo -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">?? Employee Records</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <button class="btn btn-success me-2" @onclick="GenerateEmployeeData">
+                            <i class="bi bi-plus-circle"></i> Generate Sample Data
+                        </button>
+                        <button class="btn btn-primary me-2" @onclick="DownloadEmployeeFile" disabled="@(!hasEmployeeData)">
+                            <i class="bi bi-download"></i> Download File
+                        </button>
+                        <button class="btn btn-info" @onclick="ShowEmployeeFileContent" disabled="@(!hasEmployeeData)">
+                            <i class="bi bi-eye"></i> View File Content
+                        </button>
+                    </div>
+
+                    @if (hasEmployeeData)
+                    {
+                        <div class="alert alert-info">
+                            <strong>Generated:</strong> @employeeRecords.Count records
+                        </div>
+                        
+                        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                            <table class="table table-sm table-striped">
+                                <thead class="sticky-top bg-light">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Full Name</th>
+                                        <th>Birth Date</th>
+                                        <th>Salary</th>
+                                        <th>Active</th>
+                                        <th>Dept</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var emp in employeeRecords)
+                                    {
+                                        <tr>
+                                            <td>@emp.EmployeeId</td>
+                                            <td>@emp.FullName</td>
+                                            <td>@emp.BirthDate.ToString("dd/MM/yyyy")</td>
+                                            <td>@emp.Salary.ToString("N2")</td>
+                                            <td>@(emp.IsActive ? "?" : "?")</td>
+                                            <td>@emp.Department</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Transaction Records Demo -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">?? Transaction Records (Custom Converter)</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <button class="btn btn-success me-2" @onclick="GenerateTransactionData">
+                            <i class="bi bi-plus-circle"></i> Generate Sample Data
+                        </button>
+                        <button class="btn btn-primary me-2" @onclick="DownloadTransactionFile" disabled="@(!hasTransactionData)">
+                            <i class="bi bi-download"></i> Download File
+                        </button>
+                        <button class="btn btn-info" @onclick="ShowTransactionFileContent" disabled="@(!hasTransactionData)">
+                            <i class="bi bi-eye"></i> View File Content
+                        </button>
+                    </div>
+
+                    @if (hasTransactionData)
+                    {
+                        <div class="alert alert-info">
+                            <strong>Generated:</strong> @transactionRecords.Count records
+                        </div>
+
+                        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                            <table class="table table-sm table-striped">
+                                <thead class="sticky-top bg-light">
+                                    <tr>
+                                        <th>TX ID</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Amount (VND)</th>
+                                        <th>Customer</th>
+                                        <th>Success</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var tx in transactionRecords)
+                                    {
+                                        <tr>
+                                            <td>@tx.TransactionId</td>
+                                            <td>@tx.TransactionDate.ToString("dd/MM/yyyy")</td>
+                                            <td>@tx.TransactionTime.ToString("HH:mm:ss")</td>
+                                            <td class="text-end">@tx.Amount.ToString("N0")</td>
+                                            <td>@tx.CustomerCode</td>
+                                            <td>@(tx.IsSuccessful ? "?" : "?")</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- File Upload Test -->
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header bg-warning">
+                    <h5 class="mb-0">?? Upload & Parse File</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">Select file type:</label>
+                        <div class="btn-group mb-2" role="group">
+                            <input type="radio" class="btn-check" name="fileType" id="radioEmployee" checked @onchange="() => selectedFileType = FileType.Employee">
+                            <label class="btn btn-outline-primary" for="radioEmployee">Employee</label>
+                            
+                            <input type="radio" class="btn-check" name="fileType" id="radioTransaction" @onchange="() => selectedFileType = FileType.Transaction">
+                            <label class="btn btn-outline-success" for="radioTransaction">Transaction</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <InputFile OnChange="HandleFileUpload" class="form-control" />
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(uploadMessage))
+                    {
+                        <div class="alert @(uploadSuccess ? "alert-success" : "alert-danger")">
+                            @uploadMessage
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- File Content Viewer -->
+    @if (!string.IsNullOrEmpty(fileContentToShow))
+    {
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">?? File Content (Fixed Length Format)</h5>
+                        <button class="btn btn-sm btn-light" @onclick="() => fileContentToShow = null">Close</button>
+                    </div>
+                    <div class="card-body">
+                        <pre class="bg-light p-3" style="font-family: 'Courier New', monospace; font-size: 12px; overflow-x: auto;">@fileContentToShow</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private readonly FixedLengthFileService _service = new();
+    
+    private List<EmployeeRecord> employeeRecords = new();
+    private List<TransactionRecord> transactionRecords = new();
+    
+    private bool hasEmployeeData => employeeRecords.Any();
+    private bool hasTransactionData => transactionRecords.Any();
+    
+    private string? fileContentToShow;
+    private string? uploadMessage;
+    private bool uploadSuccess;
+    
+    private FileType selectedFileType = FileType.Employee;
+    
+    private enum FileType { Employee, Transaction }
+
+    #region Employee Demo
+
+    private void GenerateEmployeeData()
+    {
+        var random = new Random();
+        var departments = new[] { "IT", "HR", "Sales", "Marketing", "Finance" };
+        var firstNames = new[] { "Nguyễn", "Trần", "Lê", "Phạm", "Hoàng", "Vũ", "Đặng", "Bùi" };
+        var lastNames = new[] { "Văn A", "Thế B", "Văn C", "Thế D", "Văn E", "Thế F" };
+
+        employeeRecords = Enumerable.Range(1, 10)
+            .Select(i => new EmployeeRecord
+            {
+                EmployeeId = 1000 + i,
+                FullName = $"{firstNames[random.Next(firstNames.Length)]} {lastNames[random.Next(lastNames.Length)]}",
+                BirthDate = DateTime.Now.AddYears(-random.Next(25, 45)).AddDays(-random.Next(0, 365)),
+                Salary = random.Next(5000, 30000) * 1000m,
+                IsActive = random.Next(0, 10) > 2,
+                Department = departments[random.Next(departments.Length)]
+            })
+            .ToList();
+    }
+
+    private async Task DownloadEmployeeFile()
+    {
+        using var stream = new MemoryStream();
+        await _service.WriteStreamAsync(stream, employeeRecords);
+        stream.Position = 0;
+        
+        var fileName = $"employees_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
+        await DownloadFile(stream, fileName);
+    }
+
+    private async Task ShowEmployeeFileContent()
+    {
+        using var stream = new MemoryStream();
+        await _service.WriteStreamAsync(stream, employeeRecords);
+        stream.Position = 0;
+        
+        using var reader = new StreamReader(stream);
+        fileContentToShow = await reader.ReadToEndAsync();
+    }
+
+    #endregion
+
+    #region Transaction Demo
+
+    private void GenerateTransactionData()
+    {
+        var random = new Random();
+        var customers = new[] { "CUST001", "CUST002", "CUST003", "CUST004", "CUST005" };
+        var descriptions = new[] { "Thanh toán hóa đơn", "Nạp tiền", "Chuyển khoản", "Rút tiền", "Mua hàng" };
+
+        transactionRecords = Enumerable.Range(1, 15)
+            .Select(i => new TransactionRecord
+            {
+                TransactionId = 100000000000000L + i,
+                TransactionDate = DateOnly.FromDateTime(DateTime.Now.AddDays(-random.Next(0, 30))),
+                TransactionTime = TimeOnly.FromDateTime(DateTime.Now.AddMinutes(-random.Next(0, 1440))),
+                Amount = random.Next(100, 10000) * 1000m,
+                CustomerCode = customers[random.Next(customers.Length)],
+                Description = descriptions[random.Next(descriptions.Length)],
+                IsSuccessful = random.Next(0, 10) > 1
+            })
+            .ToList();
+    }
+
+    private async Task DownloadTransactionFile()
+    {
+        using var stream = new MemoryStream();
+        await _service.WriteStreamAsync(stream, transactionRecords);
+        stream.Position = 0;
+        
+        var fileName = $"transactions_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
+        await DownloadFile(stream, fileName);
+    }
+
+    private async Task ShowTransactionFileContent()
+    {
+        using var stream = new MemoryStream();
+        await _service.WriteStreamAsync(stream, transactionRecords);
+        stream.Position = 0;
+        
+        using var reader = new StreamReader(stream);
+        fileContentToShow = await reader.ReadToEndAsync();
+    }
+
+    #endregion
+
+    #region File Upload
+
+    private async Task HandleFileUpload(InputFileChangeEventArgs e)
+    {
+        try
+        {
+            uploadMessage = null;
+            uploadSuccess = false;
+
+            var file = e.File;
+            using var stream = file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024); // 10MB max
+            
+            if (selectedFileType == FileType.Employee)
+            {
+                var records = await _service.ReadStreamAsync<EmployeeRecord>(stream);
+                employeeRecords = records;
+                uploadMessage = $"? Successfully parsed {records.Count} employee records!";
+                uploadSuccess = true;
+            }
+            else
+            {
+                var records = await _service.ReadStreamAsync<TransactionRecord>(stream);
+                transactionRecords = records;
+                uploadMessage = $"? Successfully parsed {records.Count} transaction records!";
+                uploadSuccess = true;
+            }
+        }
+        catch (Exception ex)
+        {
+            uploadMessage = $"? Error: {ex.Message}";
+            uploadSuccess = false;
+        }
+    }
+
+    #endregion
+
+    #region Helper Methods
+
+    private async Task DownloadFile(Stream stream, string fileName)
+    {
+        var bytes = new byte[stream.Length];
+        await stream.ReadAsync(bytes);
+        
+        var base64 = Convert.ToBase64String(bytes);
+        await JS.InvokeVoidAsync("downloadFile", fileName, base64);
+    }
+
+    #endregion
+}

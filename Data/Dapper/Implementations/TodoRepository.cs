@@ -1,6 +1,7 @@
 using System.Data;
 using Dapper;
 using Data.Dapper.Interfaces;
+using Data.Dapper.Extensions;
 using Shared.Entities.Dtos;
 
 namespace Data.Dapper.Implementations;
@@ -23,14 +24,14 @@ public class TodoRepository : ITodoRepository
     {
         const string sql = "SELECT Id, Title, IsDone, CreatedAt FROM TodoItems WHERE Id = @Id";
         
-        // Dùng transaction ðý?c truy?n vào, n?u null th? dùng c?a UnitOfWork
         var txn = transaction ?? _unitOfWork.Transaction;
         
-        var result = await _unitOfWork.Connection.QueryFirstOrDefaultAsync<TodoItemDto>(
-            new CommandDefinition(sql, new { Id = id }, txn, cancellationToken: ct)
+        return await _unitOfWork.Connection.QuerySingleAsync<TodoItemDto>(
+            sql, 
+            new { Id = id }, 
+            txn, 
+            ct
         );
-        
-        return result;
     }
 
     public async Task<IReadOnlyList<TodoItemDto>> GetAllAsync(CancellationToken ct = default, IDbTransaction? transaction = null)
@@ -39,10 +40,7 @@ public class TodoRepository : ITodoRepository
         
         var txn = transaction ?? _unitOfWork.Transaction;
         
-        var results = await _unitOfWork.Connection.QueryAsync<TodoItemDto>(
-            new CommandDefinition(sql, transaction: txn, cancellationToken: ct)
-        );
-        
+        var results = await _unitOfWork.Connection.QueryListAsync<TodoItemDto>(sql, null, txn, ct);
         return results.ToList();
     }
 
@@ -64,19 +62,16 @@ public class TodoRepository : ITodoRepository
         parameters.Add("@Search", string.IsNullOrWhiteSpace(search) ? null : search);
         parameters.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-        var items = await _unitOfWork.Connection.QueryAsync<TodoItemDto>(
-            new CommandDefinition(
-                "dbo.usp_Todo_ListPaged",
-                parameters,
-                txn,
-                commandType: CommandType.StoredProcedure,
-                cancellationToken: ct
-            )
+        var (results, outParams) = await _unitOfWork.Connection.ExecuteStoredProcWithOutputAsync<TodoItemDto>(
+            "dbo.usp_Todo_ListPaged",
+            parameters,
+            txn,
+            ct
         );
 
-        var total = parameters.Get<int>("@TotalCount");
+        var total = outParams.Get<int>("@TotalCount");
 
-        return (items.ToList(), total);
+        return (results.ToList(), total);
     }
 
     public async Task<int> CreateAsync(string title, CancellationToken ct = default, IDbTransaction? transaction = null)
@@ -88,11 +83,12 @@ public class TodoRepository : ITodoRepository
 
         var txn = transaction ?? _unitOfWork.Transaction;
 
-        var newId = await _unitOfWork.Connection.ExecuteScalarAsync<int>(
-            new CommandDefinition(sql, new { Title = title }, txn, cancellationToken: ct)
+        return await _unitOfWork.Connection.ExecuteScalarAsync<int>(
+            sql, 
+            new { Title = title }, 
+            txn, 
+            ct
         );
-        
-        return newId;
     }
 
     public async Task<bool> UpdateAsync(
@@ -110,12 +106,10 @@ public class TodoRepository : ITodoRepository
         var txn = transaction ?? _unitOfWork.Transaction;
 
         var affectedRows = await _unitOfWork.Connection.ExecuteAsync(
-            new CommandDefinition(
-                sql,
-                new { Id = id, Title = title, IsDone = isDone },
-                txn,
-                cancellationToken: ct
-            )
+            sql,
+            new { Id = id, Title = title, IsDone = isDone },
+            txn,
+            ct
         );
         
         return affectedRows > 0;
@@ -128,7 +122,10 @@ public class TodoRepository : ITodoRepository
         var txn = transaction ?? _unitOfWork.Transaction;
 
         var affectedRows = await _unitOfWork.Connection.ExecuteAsync(
-            new CommandDefinition(sql, new { Id = id }, txn, cancellationToken: ct)
+            sql, 
+            new { Id = id }, 
+            txn, 
+            ct
         );
         
         return affectedRows > 0;
@@ -137,12 +134,12 @@ public class TodoRepository : ITodoRepository
     public async Task<int> CountAsync(string? search = null, CancellationToken ct = default, IDbTransaction? transaction = null)
     {
         string sql;
-        object param;
+        object? param;
 
         if (string.IsNullOrWhiteSpace(search))
         {
             sql = "SELECT COUNT(*) FROM TodoItems";
-            param = new { };
+            param = null;
         }
         else
         {
@@ -152,10 +149,6 @@ public class TodoRepository : ITodoRepository
 
         var txn = transaction ?? _unitOfWork.Transaction;
 
-        var count = await _unitOfWork.Connection.ExecuteScalarAsync<int>(
-            new CommandDefinition(sql, param, txn, cancellationToken: ct)
-        );
-        
-        return count;
+        return await _unitOfWork.Connection.ExecuteScalarAsync<int>(sql, param, txn, ct);
     }
 }
