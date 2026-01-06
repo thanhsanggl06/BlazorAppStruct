@@ -43,9 +43,11 @@ public class FixedLengthFileService
     {
         encoding ??= Encoding.UTF8;
         var lines = await File.ReadAllLinesAsync(filePath, encoding);
-        return lines.Select(line => ConvertFromLine<T>(line)).ToList();
+        if (lines == null || lines.Length == 0)
+            return new List<T>();
+        return lines.Where(line => !string.IsNullOrWhiteSpace(line)).Select(ConvertFromLine<T>).OfType<T>().ToList();
     }
-
+    
     /// <summary>
     /// Ð?c stream thành danh sách object
     /// </summary>
@@ -58,7 +60,14 @@ public class FixedLengthFileService
         string? line;
         while ((line = await reader.ReadLineAsync()) != null)
         {
-            result.Add(ConvertFromLine<T>(line));
+            if(string.IsNullOrWhiteSpace(line))
+                continue;
+
+            var record = ConvertFromLine<T>(line);
+            if (record != null)
+            {
+                result.Add(record);
+            }
         }
         
         return result;
@@ -90,10 +99,10 @@ public class FixedLengthFileService
     /// <summary>
     /// Convert d?ng text fixed length thành object
     /// </summary>
-    public T ConvertFromLine<T>(string line) where T : new()
+    public T? ConvertFromLine<T>(string line) where T : new()
     {
-        if (string.IsNullOrEmpty(line))
-            throw new ArgumentException("Line cannot be null or empty", nameof(line));
+        if (string.IsNullOrWhiteSpace(line))
+            return default;
 
         var result = new T();
         var type = typeof(T);

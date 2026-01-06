@@ -1,0 +1,445 @@
+@page "/file-download-demo"
+@using Client.Services
+@using Shared.Contracts
+@inject IApiClient ApiClient
+@inject IJSRuntime JS
+
+<PageTitle>File Download Demo</PageTitle>
+
+<div class="container-fluid py-4">
+    <h3>?? File Download Demo</h3>
+    <p class="text-muted">Demo download single file và multiple files s? d?ng ApiClient</p>
+
+    <div class="row">
+        <!-- Single File Download -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">?? Single File Download</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">Ch?n file ð? download:</label>
+                        <select class="form-select" @bind="selectedFileType">
+                            <optgroup label="Sample Files">
+                                <option value="sample-pdf">?? Sample PDF</option>
+                                <option value="sample-csv">?? Sample CSV</option>
+                                <option value="sample-txt">?? Sample Text</option>
+                                <option value="sample-json">?? Sample JSON</option>
+                            </optgroup>
+                            <optgroup label="Fixed Length Files">
+                                <option value="fixed-employee">?? Employee Records</option>
+                                <option value="fixed-transaction">?? Transaction Records</option>
+                                <option value="fixed-invoice">?? Invoice Records</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    @if (IsFixedLengthFile(selectedFileType))
+                    {
+                        <div class="mb-3">
+                            <label class="form-label">S? lý?ng records:</label>
+                            <input type="number" class="form-control" @bind="recordCount" min="1" max="1000" />
+                            <small class="text-muted">Min: 1, Max: 1000</small>
+                        </div>
+                    }
+
+                    <div class="mb-3">
+                        <button class="btn btn-primary w-100" @onclick="DownloadSingleFile" disabled="@isDownloading">
+                            @if (isDownloading)
+                            {
+                                <span class="spinner-border spinner-border-sm me-2"></span>
+                                <span>Ðang t?i...</span>
+                            }
+                            else
+                            {
+                                <i class="bi bi-download"></i>
+                                <span> Download File</span>
+                            }
+                        </button>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(singleDownloadMessage))
+                    {
+                        <div class="alert @(singleDownloadSuccess ? "alert-success" : "alert-danger")">
+                            @singleDownloadMessage
+                        </div>
+                    }
+
+                    @if (lastDownloadInfo != null)
+                    {
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h6>?? Last Download Info:</h6>
+                                <div><strong>File:</strong> @lastDownloadInfo.FileName</div>
+                                <div><strong>Type:</strong> @lastDownloadInfo.ContentType</div>
+                                <div><strong>Size:</strong> @FormatFileSize(lastDownloadInfo.FileSize ?? 0)</div>
+                                <div><strong>Time:</strong> @lastDownloadTime?.ToString("HH:mm:ss")</div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Multiple Files Download -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">?? Multiple Files Download (ZIP)</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Sample Files:</strong></label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="check-pdf" @bind="includePdf">
+                            <label class="form-check-label" for="check-pdf">?? PDF File</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="check-csv" @bind="includeCsv">
+                            <label class="form-check-label" for="check-csv">?? CSV File</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="check-txt" @bind="includeTxt">
+                            <label class="form-check-label" for="check-txt">?? Text File</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="check-json" @bind="includeJson">
+                            <label class="form-check-label" for="check-json">?? JSON File</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Fixed Length Files:</strong></label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="check-employee" @bind="includeEmployee">
+                            <label class="form-check-label" for="check-employee">?? Employee Records</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="check-transaction" @bind="includeTransaction">
+                            <label class="form-check-label" for="check-transaction">?? Transaction Records</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="check-invoice" @bind="includeInvoice">
+                            <label class="form-check-label" for="check-invoice">?? Invoice Records</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Tên file ZIP:</label>
+                        <input type="text" class="form-control" @bind="zipFileName" placeholder="my-files.zip" />
+                    </div>
+
+                    <div class="mb-3">
+                        <button class="btn btn-success w-100" @onclick="DownloadMultipleFiles" disabled="@(isDownloading || selectedFilesCount == 0)">
+                            @if (isDownloading)
+                            {
+                                <span class="spinner-border spinner-border-sm me-2"></span>
+                                <span>Ðang t?o ZIP...</span>
+                            }
+                            else
+                            {
+                                <i class="bi bi-file-earmark-zip"></i>
+                                <span> Download ZIP (@selectedFilesCount files)</span>
+                            }
+                        </button>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(multipleDownloadMessage))
+                    {
+                        <div class="alert @(multipleDownloadSuccess ? "alert-success" : "alert-danger")">
+                            @multipleDownloadMessage
+                        </div>
+                    }
+
+                    @if (lastZipInfo != null)
+                    {
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h6>?? Last ZIP Info:</h6>
+                                <div><strong>File:</strong> @lastZipFileName</div>
+                                <div><strong>Files:</strong> @lastZipFileCount files</div>
+                                <div><strong>Size:</strong> @FormatFileSize(lastZipSize)</div>
+                                <div><strong>Time:</strong> @lastZipTime?.ToString("HH:mm:ss")</div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Available Files -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">?? Available Files</h5>
+                </div>
+                <div class="card-body">
+                    @if (isLoadingFiles)
+                    {
+                        <div class="text-center">
+                            <div class="spinner-border text-primary"></div>
+                            <p>Loading files...</p>
+                        </div>
+                    }
+                    else if (availableFiles.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>File Name</th>
+                                        <th>Content Type</th>
+                                        <th>Size</th>
+                                        <th>Type</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var file in availableFiles)
+                                    {
+                                        <tr>
+                                            <td>@file.FileName</td>
+                                            <td><code>@file.ContentType</code></td>
+                                            <td>@FormatFileSize(file.FileSize ?? 0)</td>
+                                            <td>
+                                                @if (file.Metadata?.TryGetValue("type", out var fileType) == true)
+                                                {
+                                                    <span class="badge bg-secondary">@fileType</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary" @onclick="() => QuickDownload(file.FileName)">
+                                                    <i class="bi bi-download"></i> Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning">No files available</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    // Single file download
+    private string selectedFileType = "sample-pdf";
+    private int recordCount = 20;
+    private string? singleDownloadMessage;
+    private bool singleDownloadSuccess;
+    private FileDownloadInfo? lastDownloadInfo;
+    private DateTime? lastDownloadTime;
+
+    // Multiple files download
+    private bool includePdf = true;
+    private bool includeCsv = true;
+    private bool includeTxt = true;
+    private bool includeJson = false;
+    private bool includeEmployee = false;
+    private bool includeTransaction = false;
+    private bool includeInvoice = false;
+    private string zipFileName = "download.zip";
+    private string? multipleDownloadMessage;
+    private bool multipleDownloadSuccess;
+    private byte[]? lastZipInfo;
+    private string? lastZipFileName;
+    private int lastZipFileCount;
+    private long lastZipSize;
+    private DateTime? lastZipTime;
+
+    // Common
+    private bool isDownloading;
+    private bool isLoadingFiles = true;
+    private List<FileDownloadInfo> availableFiles = new();
+
+    private int selectedFilesCount =>
+        (includePdf ? 1 : 0) + (includeCsv ? 1 : 0) + (includeTxt ? 1 : 0) + (includeJson ? 1 : 0) +
+        (includeEmployee ? 1 : 0) + (includeTransaction ? 1 : 0) + (includeInvoice ? 1 : 0);
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAvailableFiles();
+    }
+
+    private bool IsFixedLengthFile(string fileType)
+    {
+        return fileType.StartsWith("fixed-");
+    }
+
+    private async Task LoadAvailableFiles()
+    {
+        isLoadingFiles = true;
+        try
+        {
+            var response = await ApiClient.GetAsync<List<FileDownloadInfo>>("/api/filedownload/available");
+            if (response.IsSuccess && response.Data != null)
+            {
+                availableFiles = response.Data;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading files: {ex.Message}");
+        }
+        finally
+        {
+            isLoadingFiles = false;
+        }
+    }
+
+    private async Task DownloadSingleFile()
+    {
+        isDownloading = true;
+        singleDownloadMessage = null;
+
+        try
+        {
+            var request = new FileDownloadRequest
+            {
+                FileIdentifier = selectedFileType
+            };
+
+            // Add parameters for fixed length files
+            if (IsFixedLengthFile(selectedFileType))
+            {
+                request = request with 
+                { 
+                    Parameters = new Dictionary<string, string> 
+                    { 
+                        { "count", recordCount.ToString() } 
+                    } 
+                };
+            }
+
+            var result = await ApiClient.DownloadFileAsync("/api/filedownload/single", request);
+
+            if (result.Success && result.FileBytes != null)
+            {
+                // Trigger browser download
+                await DownloadFileToClient(result.FileBytes, result.FileName ?? "download.bin");
+
+                singleDownloadMessage = $"? Downloaded: {result.FileName} ({FormatFileSize(result.FileBytes.Length)})";
+                singleDownloadSuccess = true;
+
+                lastDownloadInfo = new FileDownloadInfo
+                {
+                    FileName = result.FileName ?? "unknown",
+                    ContentType = result.ContentType ?? "unknown",
+                    FileSize = result.FileBytes.Length
+                };
+                lastDownloadTime = DateTime.Now;
+            }
+            else
+            {
+                singleDownloadMessage = $"? Error: {result.ErrorMessage}";
+                singleDownloadSuccess = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            singleDownloadMessage = $"? Exception: {ex.Message}";
+            singleDownloadSuccess = false;
+        }
+        finally
+        {
+            isDownloading = false;
+        }
+    }
+
+    private async Task DownloadMultipleFiles()
+    {
+        isDownloading = true;
+        multipleDownloadMessage = null;
+
+        try
+        {
+            var fileIds = new List<string>();
+            if (includePdf) fileIds.Add("sample-pdf");
+            if (includeCsv) fileIds.Add("sample-csv");
+            if (includeTxt) fileIds.Add("sample-txt");
+            if (includeJson) fileIds.Add("sample-json");
+            if (includeEmployee) fileIds.Add("fixed-employee");
+            if (includeTransaction) fileIds.Add("fixed-transaction");
+            if (includeInvoice) fileIds.Add("fixed-invoice");
+
+            var request = new MultipleFilesDownloadRequest
+            {
+                FileIdentifiers = fileIds,
+                ZipFileName = string.IsNullOrWhiteSpace(zipFileName) ? "download.zip" : zipFileName
+            };
+
+            var result = await ApiClient.DownloadMultipleFilesAsync("/api/filedownload/multiple", request);
+
+            if (result.Success && result.ZipBytes != null)
+            {
+                // Trigger browser download
+                await DownloadFileToClient(result.ZipBytes, result.ZipFileName ?? "download.zip");
+
+                multipleDownloadMessage = $"? Downloaded ZIP: {result.ZipFileName} with {result.FileCount ?? fileIds.Count} files ({FormatFileSize(result.ZipBytes.Length)})";
+                multipleDownloadSuccess = true;
+
+                lastZipInfo = result.ZipBytes;
+                lastZipFileName = result.ZipFileName;
+                lastZipFileCount = result.FileCount ?? fileIds.Count;
+                lastZipSize = result.ZipBytes.Length;
+                lastZipTime = DateTime.Now;
+            }
+            else
+            {
+                multipleDownloadMessage = $"? Error: {result.ErrorMessage}";
+                multipleDownloadSuccess = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            multipleDownloadMessage = $"? Exception: {ex.Message}";
+            multipleDownloadSuccess = false;
+        }
+        finally
+        {
+            isDownloading = false;
+        }
+    }
+
+    private async Task QuickDownload(string fileName)
+    {
+        // Map filename to fileId
+        var fileId = fileName switch
+        {
+            "sample.pdf" => "sample-pdf",
+            "sample.csv" => "sample-csv",
+            "sample.txt" => "sample-txt",
+            "sample.json" => "sample-json",
+            "employees.txt" => "fixed-employee",
+            "transactions.txt" => "fixed-transaction",
+            "invoices.txt" => "fixed-invoice",
+            _ => fileName.Replace("sample.", "sample-").Replace(".pdf", "").Replace(".csv", "").Replace(".txt", "").Replace(".json", "")
+        };
+        
+        selectedFileType = fileId;
+        await DownloadSingleFile();
+    }
+
+    private async Task DownloadFileToClient(byte[] fileBytes, string fileName)
+    {
+        var base64 = Convert.ToBase64String(fileBytes);
+        await JS.InvokeVoidAsync("downloadFile", fileName, base64);
+    }
+
+    private static string FormatFileSize(long bytes)
+    {
+        if (bytes < 1024) return $"{bytes} B";
+        if (bytes < 1024 * 1024) return $"{bytes / 1024.0:F2} KB";
+        return $"{bytes / (1024.0 * 1024):F2} MB";
+    }
+}

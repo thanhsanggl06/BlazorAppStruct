@@ -1,9 +1,9 @@
-using Shared.FixedLength.Models;
+Ôªøusing Shared.FixedLength.Models;
 
 namespace Shared.FixedLength.SampleData;
 
 /// <summary>
-/// Generator cho sample data ? demo
+/// Generator cho sample data ƒë·ªÉ demo
 /// </summary>
 public static class SampleDataGenerator
 {
@@ -13,13 +13,13 @@ public static class SampleDataGenerator
 
     private static readonly string[] FirstNames = 
     { 
-        "Nguy?n", "Tr?n", "LÍ", "Ph?m", "Ho‡ng", "V?", "–?ng", "B˘i", "–?", "H?" 
+        "Nguy·ªÖn", "Tr·∫ßn", "L√™", "Ph·∫°m", "Ho√†ng", "V√µ", "ƒê·∫∑ng", "B√πi", "ƒê·ªó", "H·ªì" 
     };
 
     private static readonly string[] LastNames = 
     { 
-        "V„n A", "Th? B", "V„n C", "Th? D", "V„n E", "Th? F", 
-        "V„n G", "Th? H", "V„n I", "Th? K" 
+        "VƒÉn A", "Th·ªã B", "VƒÉn C", "Th·ªã D", "VƒÉn E", "Th·ªã F", 
+        "VƒÉn G", "Th·ªã H", "VƒÉn I", "Th·ªã K" 
     };
 
     private static readonly string[] Departments = 
@@ -54,8 +54,8 @@ public static class SampleDataGenerator
 
     private static readonly string[] TransactionDescriptions = 
     { 
-        "Thanh to·n hÛa ın", "N?p ti?n", "Chuy?n kho?n", "R˙t ti?n", 
-        "Mua h‡ng", "–?t c?c", "Ho‡n ti?n", "Thanh to·n phÌ"
+        "Thanh to√°n h√≥a ƒë∆°n", "N·∫°p ti·ªÅn", "Chuy·ªÉn kho·∫£n", "R√∫t ti·ªÅn", 
+        "Mua h√†ng", "ƒê·∫∑t c·ªçc", "Ho√†n ti·ªÅn", "Thanh to√°n ph√≠"
     };
 
     public static List<TransactionRecord> GenerateTransactions(int count)
@@ -89,9 +89,9 @@ public static class SampleDataGenerator
 
     private static readonly string[] CompanyNames = 
     { 
-        "CÙng ty TNHH ABC", "CÙng ty CP XYZ", "CÙng ty TNHH Tech Solutions",
-        "CÙng ty CP Digital Marketing", "CÙng ty TNHH Innovation Co",
-        "CÙng ty CP Global Trade", "CÙng ty TNHH Fast Delivery"
+        "C√¥ng ty TNHH ABC", "C√¥ng ty CP XYZ", "C√¥ng ty TNHH Tech Solutions",
+        "C√¥ng ty CP Digital Marketing", "C√¥ng ty TNHH Innovation Co",
+        "C√¥ng ty CP Global Trade", "C√¥ng ty TNHH Fast Delivery"
     };
 
     public static List<InvoiceRecord> GenerateInvoices(int count)
@@ -122,7 +122,7 @@ public static class SampleDataGenerator
                     Status = status,
                     IsPaid = isPaid,
                     Reference = $"REF{Random.Next(10000, 99999)}",
-                    Notes = isPaid ? "–? thanh to·n ?y ?" : null
+                    Notes = isPaid ? "ƒê√£ thanh to√°n ƒë·∫ßy ƒë·ªß" : null
                 };
             })
             .OrderBy(inv => inv.InvoiceDate)
